@@ -23,6 +23,23 @@
  */
 import type { FontDefinition, FontSelectionConfig } from "@/types/fontConfig";
 
+// 固定版本的字体随项目保存，启动和构建时无需访问字体 CDN。
+// 保留原有 latin/cyrillic 子集，Unicode 范围来自 Fontsource 的原始 CSS。
+function localFontVariants(id: string, weights: number[]) {
+	const unicodeRanges = {
+		latin: "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+		cyrillic: "U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116",
+	};
+	return Object.entries(unicodeRanges).flatMap(([subset, unicodeRange]) =>
+		weights.map((weight) => ({
+			src: [`./public/assets/fonts/${id}/${id}-${subset}-${weight}-normal.woff2`],
+			weight,
+			style: "normal",
+			unicodeRange: [unicodeRange],
+		})),
+	);
+}
+
 // ─── Astro Font API 字体定义 ───────────────────────────────
 // 适用于 Astro Font API 的字体配置，支持自动下载、缓存和优化加载
 // 本地开发调试的情况下，修改后需要每次重启开发服务器才能生效
@@ -30,8 +47,11 @@ export const fontsList: FontDefinition[] = [
 	{
 		name: "Zen Maru Gothic",
 		cssVariable: "--font-zen-maru-gothic",
-		provider: "fontsource",
-		weights: ["300", "400", "500", "600", "700"],
+		provider: "local",
+		options: {
+			variants: localFontVariants("zen-maru-gothic", [300, 400, 500, 700]),
+		},
+		weights: ["300", "400", "500", "700"],
 		styles: ["normal"],
 		subsets: ["latin", "cyrillic"],
 		fallbacks: ["sans-serif"],
@@ -39,7 +59,10 @@ export const fontsList: FontDefinition[] = [
 	{
 		name: "Inter",
 		cssVariable: "--font-inter",
-		provider: "fontsource",
+		provider: "local",
+		options: {
+			variants: localFontVariants("inter", [300, 400, 500, 600, 700]),
+		},
 		weights: ["300", "400", "500", "600", "700"],
 		styles: ["normal"],
 		subsets: ["latin", "cyrillic"],
@@ -48,7 +71,10 @@ export const fontsList: FontDefinition[] = [
 	{
 		name: "JetBrains Mono",
 		cssVariable: "--font-jetbrains-mono",
-		provider: "fontsource",
+		provider: "local",
+		options: {
+			variants: localFontVariants("jetbrains-mono", [400, 700]),
+		},
 		weights: ["400", "700"],
 		styles: ["normal"],
 		subsets: ["latin", "cyrillic"],

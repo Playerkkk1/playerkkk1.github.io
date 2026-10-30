@@ -49,6 +49,8 @@ export type FontDefinition = {
 			src: string[];
 			weight?: string | number;
 			style?: string;
+			/** 字符子集的 Unicode 范围，避免不同子集互相覆盖 */
+			unicodeRange?: string[];
 		}>;
 		[key: string]: unknown;
 	};
