@@ -189,7 +189,7 @@ const navTitle = siteConfig.navbar.title || siteConfig.title;
     html:not([data-wallpaper-mode="none"]) body.wallpaper-transparent .mobile-menu-glass,
     html:not([data-wallpaper-mode="none"])[data-has-wallpaper] #nav-menu-panel::after,
     html:not([data-wallpaper-mode="none"]) body.wallpaper-transparent #nav-menu-panel::after {
-        background: rgba(255, 255, 255, 0.55);
+        background: var(--panel-bg);
         -webkit-backdrop-filter: blur(var(--navbar-panel-blur, 20px)) saturate(1.5);
         backdrop-filter: blur(var(--navbar-panel-blur, 20px)) saturate(1.5);
     }
@@ -197,7 +197,7 @@ const navTitle = siteConfig.navbar.title || siteConfig.title;
     :root.dark:not([data-wallpaper-mode="none"]) body.wallpaper-transparent .mobile-menu-glass,
     :root.dark:not([data-wallpaper-mode="none"])[data-has-wallpaper] #nav-menu-panel::after,
     :root.dark:not([data-wallpaper-mode="none"]) body.wallpaper-transparent #nav-menu-panel::after {
-        background: rgba(23, 23, 23, 0.6);
+        background: var(--panel-bg);
     }
 
     /* 左侧矩形和两个圆角补集组成遮罩，无 SVG 蒙版、无巨大阴影。
@@ -243,7 +243,7 @@ const navTitle = siteConfig.navbar.title || siteConfig.title;
     /* ---- 内容：透明独立层，不重复绘制底色或 backdrop-filter ---- */
     .mobile-menu-drawer {
         --drawer-on-surface: var(--deep-text);
-        --drawer-on-surface-variant: color-mix(in oklch, var(--deep-text) 70%, transparent);
+        --drawer-on-surface-variant: var(--text-secondary);
         --drawer-hover: color-mix(in oklch, var(--primary) 8%, transparent);
         --drawer-selected-bg: color-mix(in oklch, var(--primary) 14%, transparent);
 
@@ -256,8 +256,8 @@ const navTitle = siteConfig.navbar.title || siteConfig.title;
         background: transparent;
     }
     :root.dark .mobile-menu-drawer {
-        --drawer-on-surface: rgba(255, 255, 255, 0.87);
-        --drawer-on-surface-variant: rgba(255, 255, 255, 0.62);
+        --drawer-on-surface: var(--text-primary);
+        --drawer-on-surface-variant: var(--text-secondary);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -420,22 +420,31 @@ const navTitle = siteConfig.navbar.title || siteConfig.title;
     });
 
     function markActiveNav() {
-        const path = location.pathname;
-        document.querySelectorAll(".mobile-menu-item[data-nav-href]").forEach((item) => {
-            const href = item.getAttribute("data-nav-href");
+        const path = location.pathname.replace(/\/$/, "") || "/";
+        document.querySelectorAll(".mobile-menu-item[data-nav-href], #navbar .dropdown-container a[href]").forEach((item) => {
+            const href = item.getAttribute("data-nav-href") || item.getAttribute("href");
+            let exact = false;
             let active = false;
             if (href) {
                 try {
-                    active = new URL(href, location.href).pathname === path;
+                    const target = new URL(href, location.href);
+                    const targetPath = target.pathname.replace(/\/$/, "") || "/";
+                    exact = target.origin === location.origin && targetPath === path;
+                    active = exact || (target.origin === location.origin && targetPath !== "/" && path.startsWith(`${targetPath}/`));
                 } catch {
                     active = false;
                 }
             }
             item.setAttribute("data-active", active ? "true" : "false");
+            if (active) item.setAttribute("aria-current", exact ? "page" : "location");
+            else item.removeAttribute("aria-current");
             if (active) {
                 const group = item.closest("[data-mobile-dropdown]");
                 if (group) setDropdownExpanded(group, true);
             }
+        });
+        document.querySelectorAll("#navbar .dropdown-container").forEach((group) => {
+            group.toggleAttribute("data-nav-active", !!group.querySelector('a[data-active="true"]'));
         });
     }
 

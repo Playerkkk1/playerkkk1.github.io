@@ -1,0 +1,110 @@
+/* Dusty Lily: shared finishing details. Geometry and interactions stay in the
+   existing components; the palette lives in variables.styl. */
+@layer components {
+  body {
+    color: var(--text-primary);
+  }
+
+
+  #navbar .dropdown-container a[aria-current],
+  #navbar .dropdown-container[data-nav-active] > .dropdown-trigger,
+  .mobile-menu-item[data-active="true"] {
+    color: var(--primary);
+    background-color: var(--selection-bg);
+    box-shadow: inset 0 -2px 0 var(--rose-pink);
+  }
+
+  .post-card-title::before {
+    background: var(--rose-pink);
+  }
+
+  .profile-card {
+    background-image:
+      radial-gradient(ellipse at 12% 0%, color-mix(in srgb, var(--text-muted) 3%, transparent), transparent 65%),
+      linear-gradient(135deg, color-mix(in srgb, var(--rose-gold) 2%, transparent), transparent 60%);
+  }
+
+  .profile-card > a {
+    outline: 1px solid var(--surface-border);
+    outline-offset: -1px;
+  }
+
+  .profile-name {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Noto Serif SC', serif;
+    letter-spacing: 0.035em;
+  }
+
+  .profile-rule {
+    width: 2.75rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose-pink), var(--rose-gold), var(--rose-pink));
+  }
+
+  #search-bar,
+  #search-bar-inside {
+    box-shadow: inset 0 0 0 1px var(--surface-border);
+  }
+
+  #search-bar:focus-within,
+  #search-bar-inside:focus-within {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Override typography utilities in both modes, including prose-invert. */
+.custom-md {
+  --tw-prose-body: var(--text-primary);
+  --tw-prose-headings: var(--text-primary);
+  --tw-prose-lead: var(--text-secondary);
+  --tw-prose-links: var(--primary);
+  --tw-prose-bold: var(--text-primary);
+  --tw-prose-counters: var(--text-muted);
+  --tw-prose-bullets: var(--text-muted);
+  --tw-prose-hr: var(--line-divider);
+  --tw-prose-quotes: var(--text-primary);
+  --tw-prose-quote-borders: var(--rose-gold);
+  --tw-prose-captions: var(--text-muted);
+  --tw-prose-code: var(--inline-code-color);
+  --tw-prose-th-borders: var(--line-color);
+  --tw-prose-td-borders: var(--line-divider);
+}
+
+/* Floral reference: a quiet background at the outside of the reading area.
+   Crop the source's top marker, soften the image, and fade into the page color.
+   Only desktop gets an image declaration; mobile has no floral layer to load. */
+#content-panel::before {
+  content: none;
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  #content-panel::before {
+    --floral-size: clamp(28rem, 32vw, 42rem);
+    --floral-gutter: max(0px, calc((100% - min(92vw, var(--page-width))) / 2 - 0.5rem));
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0 0 auto;
+    width: 100%;
+    height: min(calc(var(--floral-size) * 1.6377 - 5rem), max(0px, calc(100% - 2rem)));
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+    opacity: var(--floral-opacity);
+    filter: saturate(0.55) blur(0.6px);
+    background-image:
+      linear-gradient(to bottom, var(--page-bg), transparent 12%, transparent 65%, var(--page-bg)),
+      url('/assets/backgrounds/dusty-floral-reference.png'),
+      url('/assets/backgrounds/dusty-floral-reference.png');
+    background-size: 100% 100%, var(--floral-size) auto, var(--floral-size) auto;
+    background-position: center, left -5rem, right -5rem;
+    background-repeat: no-repeat;
+    -webkit-mask-image: linear-gradient(to right,
+      black, black calc(var(--floral-gutter) * 0.4), transparent var(--floral-gutter),
+      transparent calc(100% - var(--floral-gutter)), black calc(100% - var(--floral-gutter) * 0.4), black);
+    mask-image: linear-gradient(to right,
+      black, black calc(var(--floral-gutter) * 0.4), transparent var(--floral-gutter),
+      transparent calc(100% - var(--floral-gutter)), black calc(100% - var(--floral-gutter) * 0.4), black);
+  }
+}

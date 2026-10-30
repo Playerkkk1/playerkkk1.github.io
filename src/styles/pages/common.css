@@ -56,17 +56,17 @@
 	place-items: center;
 	border-radius: var(--radius-large);
 	background: var(--primary);
-	color: white;
+	color: var(--on-primary);
 	font-size: 2.5rem;
 }
 
 :root.dark .page-icon {
-	color: rgb(0 0 0 / 70%);
+	color: var(--on-primary);
 }
 
 .page-heading h2 {
 	margin: 0;
-	color: rgb(0 0 0 / 90%);
+	color: var(--text-primary);
 	font-size: 1.5rem;
 	font-weight: 700;
 	line-height: 1.25;
@@ -93,7 +93,7 @@
 }
 
 :root.dark .page-heading h2 {
-	color: rgb(255 255 255 / 90%);
+	color: var(--text-primary);
 }
 
 @media (max-width: 640px) {

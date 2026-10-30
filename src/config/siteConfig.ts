@@ -42,7 +42,7 @@ const pages = resolvePageToggles({
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Player's DevLog",
+	title: "Player's BLog",
 
 	// 站点副标题
 	subtitle: "记录代码、学习与成长",
@@ -70,7 +70,7 @@ export const siteConfig: SiteConfig = {
 	// 主题色
 	themeColor: {
 		// 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		hue: 165,
+		hue: 355,
 		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
 		defaultMode: "system",
 	},
@@ -83,23 +83,24 @@ export const siteConfig: SiteConfig = {
 	// 网站Card样式配置
 	card: {
 		// 是否开启卡片边框和阴影，开启后让网站更有立体感
-		border: false,
+		border: true,
 		// 是否让卡片风格跟随主题色相
 		followTheme: false,
 	},
 
 	// Favicon 配置
 	// 如果启用了OpenGraph图片功能，数组中需要包含png格式的favicon图标
-	favicon: [
-		{
-			// 图标文件路径
-			src: "/favicon/firefly-32.png",
-			// 可选，指定主题 'light' | 'dark'
-			// theme: "light",
-			// 可选，图标大小
-			// sizes: "32x32",
-		},
-	],
+favicon: [
+  {
+    src: "/favicon.ico",
+    sizes: "16x16 32x32 48x48 64x64",
+  },
+  {
+    src: "/favicon/firefly-128.png",
+    sizes: "128x128",
+  },
+],
+
 
 	// 导航栏配置
 	navbar: {
@@ -114,9 +115,9 @@ export const siteConfig: SiteConfig = {
 		// 使用 Astro 图标库时不需要设置 valueDark，图标会自动跟随主题亮暗色切换
 		logo: {
 			type: "image",
-			value: "assets/images/logo/firefly-light.png",
-			valueDark: "assets/images/logo/firefly-dark.png",
-			alt: "🍀",
+			value: "/favicon/firefly-128.png",
+			valueDark: "/favicon/firefly-128.png",
+			alt: "Rose Candle · 玫瑰烛台",
 		},
 		// 导航栏标题
 		title: "Player's DevLog",
