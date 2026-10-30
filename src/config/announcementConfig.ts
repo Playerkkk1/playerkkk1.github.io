@@ -5,7 +5,7 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "",
 
 	// 公告内容
-	content: "欢迎来到我的博客！这是一则示例公告。",
+	content: "这里记录 Java 后端与 AI 应用开发的学习笔记、项目实践和问题复盘。",
 
 	// 是否允许用户关闭公告
 	closable: true,

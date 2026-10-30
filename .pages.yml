@@ -1,0 +1,94 @@
+# Pages CMS reads this file from the branch selected in the app (use master).
+# Setup and Markdown/MDX editing guidance: docs/pages-cms.md
+media:
+  - name: post-images
+    label: 文章图片
+    input: public/uploads/posts
+    output: /uploads/posts
+    extensions: [png, jpg, jpeg, webp, avif, gif]
+    rename: random
+
+content:
+  - name: posts
+    label: Markdown 文章
+    type: collection
+    path: src/content/posts
+    format: yaml-frontmatter
+    subfolders: true
+    # The .md filename template limits this collection to Markdown (not MDX).
+    # Exclusions are literal file/directory names, not glob patterns.
+    # Redis has a leading blank line before frontmatter; edit it as raw code.
+    exclude:
+      - images
+      - redis-01-introduction.md
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, published, category, draft, pinned]
+      sort: [published, title]
+      search: [title, description, category]
+      default:
+        sort: published
+        order: desc
+    fields:
+      - name: title
+        label: 文章标题
+        type: string
+        required: true
+      - name: published
+        label: 发布日期
+        type: date
+        required: true
+        options:
+          time: false
+          format: yyyy-MM-dd
+      - name: description
+        label: 文章摘要
+        type: text
+        default: ""
+      - name: category
+        label: 分类
+        type: string
+        default: ""
+      - name: tags
+        label: 标签
+        type: string
+        list: true
+        default: []
+        description: 每项填写一个标签，保存为字符串数组。
+      - name: draft
+        label: 草稿
+        type: boolean
+        default: true
+        description: 新文章默认草稿；关闭后才会出现在正式构建中。
+      - name: pinned
+        label: 置顶
+        type: boolean
+        default: false
+      - name: image
+        label: 封面图片
+        type: image
+        default: ""
+        options:
+          media: post-images
+      - name: body
+        label: Markdown 正文
+        type: rich-text
+        description: 普通 Markdown 可用可视化编辑；Firefly 指令、公式等特殊语法请使用 Source 源码模式。
+        options:
+          format: markdown
+          switcher: true
+          media: post-images
+
+  - name: redis-source
+    label: Redis 旧文（源码编辑）
+    type: file
+    path: src/content/posts/redis-01-introduction.md
+    format: code
+
+settings:
+  content:
+    # Keep series, seriesOrder, author, lang and other unmanaged frontmatter.
+    merge: true

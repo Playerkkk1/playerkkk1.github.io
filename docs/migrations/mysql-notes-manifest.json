@@ -1,0 +1,380 @@
+{
+  "source": "MySQL/MySQL.md",
+  "sourceSha256": "7ab18fde7591a256dfc4da34072bcf75b20fefc0875e61cb8615910a94e7c848",
+  "importedOn": "2026-10-30",
+  "publishedDateMeaning": "博客迁入日期，并非原笔记撰写日期",
+  "series": "MySQL 学习笔记",
+  "articles": [
+    {
+      "order": 1,
+      "sourceHeading": "启动MySQL（命令行）",
+      "sourceLines": [
+        3,
+        37
+      ],
+      "title": "MySQL 学习笔记 01：启动与基础概念",
+      "destination": "src/content/posts/mysql-notes/01-getting-started.md",
+      "route": "/posts/mysql-notes/01-getting-started/",
+      "images": [
+        "image-20260513094321532.png",
+        "image-20260513094528133.png",
+        "image-20260513095306200.png"
+      ],
+      "sha256": "952d5ffd8d12cc96139def842f6dc137a3e89c1b6279964aade9bce54621d128"
+    },
+    {
+      "order": 2,
+      "sourceHeading": "SQL基础语句",
+      "sourceLines": [
+        38,
+        272
+      ],
+      "title": "MySQL 学习笔记 02：SQL 基础与库表操作",
+      "destination": "src/content/posts/mysql-notes/02-databases-and-tables.md",
+      "route": "/posts/mysql-notes/02-databases-and-tables/",
+      "images": [
+        "image-20260513113937786.png",
+        "image-20260513114053978.png",
+        "image-20260513143717647.png",
+        "image-20260513152952399.png",
+        "image-20260513153227504.png",
+        "image-20260513154937911.png",
+        "image-20260513160158852.png",
+        "image-20260513160353959.png",
+        "image-20260514135328653.png"
+      ],
+      "sha256": "b8f4bf3112b812fe8cab1bcf0bd4c58f00aba8497337e9c8f31e7eab8b87166f"
+    },
+    {
+      "order": 3,
+      "sourceHeading": "数据操纵语句(DML)",
+      "sourceLines": [
+        273,
+        350
+      ],
+      "title": "MySQL 学习笔记 03：数据操纵语句 DML",
+      "destination": "src/content/posts/mysql-notes/03-dml.md",
+      "route": "/posts/mysql-notes/03-dml/",
+      "images": [],
+      "sha256": "74bb9d8cc1df4a4ea21265e9dcf42214ec5881a8aa38b90b21109d6fe16254db"
+    },
+    {
+      "order": 4,
+      "sourceHeading": "数据操作语句DQL(单表)",
+      "sourceLines": [
+        351,
+        868
+      ],
+      "title": "MySQL 学习笔记 04：单表查询、运算符与函数",
+      "destination": "src/content/posts/mysql-notes/04-single-table-query.md",
+      "route": "/posts/mysql-notes/04-single-table-query/",
+      "images": [
+        "image-20260526094030976.png"
+      ],
+      "sha256": "18d99ba120a60b7e258580b6a48e19e53af58a86101ce973462f21ac81d69870"
+    },
+    {
+      "order": 5,
+      "sourceHeading": "数据库约束",
+      "sourceLines": [
+        869,
+        1016
+      ],
+      "title": "MySQL 学习笔记 05：数据库约束",
+      "destination": "src/content/posts/mysql-notes/05-constraints.md",
+      "route": "/posts/mysql-notes/05-constraints/",
+      "images": [
+        "image-20260611090423007.png",
+        "image-20260611091121131.png",
+        "image-20260612111548331.png",
+        "image-20260612112239359.png"
+      ],
+      "sha256": "397071776691c6ac8da903679e46720913ac56892f17d9bdf1df1127ebc677f0"
+    },
+    {
+      "order": 6,
+      "sourceHeading": "数据库多表关系",
+      "sourceLines": [
+        1017,
+        1114
+      ],
+      "title": "MySQL 学习笔记 06：数据库多表关系",
+      "destination": "src/content/posts/mysql-notes/06-table-relationships.md",
+      "route": "/posts/mysql-notes/06-table-relationships/",
+      "images": [
+        "image-20260618141409158.png",
+        "image-20260618142112361.png",
+        "image-20260618142502207.png"
+      ],
+      "sha256": "8d0b5ebd1da807c14e3e63f7d0f2a22fd9484e4593636448445e5c87ead573ee"
+    },
+    {
+      "order": 7,
+      "sourceHeading": "数据查询语言DQL（多表）",
+      "sourceLines": [
+        1115,
+        1291
+      ],
+      "title": "MySQL 学习笔记 07：多表查询与子查询",
+      "destination": "src/content/posts/mysql-notes/07-multi-table-query.md",
+      "route": "/posts/mysql-notes/07-multi-table-query/",
+      "images": [
+        "image-20260619085125640.png",
+        "image-20260621205754840.png"
+      ],
+      "sha256": "5ffbd583da45ad53c4d6fa3aa0b964d929efce2cb1ee8201b0800ed2e175f513"
+    },
+    {
+      "order": 8,
+      "sourceHeading": "数据库事务",
+      "sourceLines": [
+        1292,
+        1342
+      ],
+      "title": "MySQL 学习笔记 08：数据库事务",
+      "destination": "src/content/posts/mysql-notes/08-transactions.md",
+      "route": "/posts/mysql-notes/08-transactions/",
+      "images": [
+        "image-20260630090347763.png",
+        "image-20260702085731002.png"
+      ],
+      "sha256": "b6259a16def152c9beb07e5d4de9cbbfe743c0856298dfb76b19c89301f60406"
+    },
+    {
+      "order": 9,
+      "sourceHeading": "用户权限控制管理",
+      "sourceLines": [
+        1343,
+        1375
+      ],
+      "title": "MySQL 学习笔记 09：用户与权限管理",
+      "destination": "src/content/posts/mysql-notes/09-users-and-privileges.md",
+      "route": "/posts/mysql-notes/09-users-and-privileges/",
+      "images": [
+        "image-20260704182610736.png",
+        "image-20260704184012611.png",
+        "image-20260704184146564.png",
+        "image-20260704184200781-1783161721257-1.png",
+        "image-20260704184214085.png"
+      ],
+      "sha256": "d19e765858d7dc01263e224a32e6c8db7cb8177f0eb48f17433376db1b336285"
+    },
+    {
+      "order": 10,
+      "sourceHeading": "数据备份和还原",
+      "sourceLines": [
+        1376,
+        1382
+      ],
+      "title": "MySQL 学习笔记 10：数据备份与还原",
+      "destination": "src/content/posts/mysql-notes/10-backup-and-recovery.md",
+      "route": "/posts/mysql-notes/10-backup-and-recovery/",
+      "images": [
+        "image-20260705093158536.png",
+        "image-20260705094222844.png"
+      ],
+      "sha256": "e18a5ac322ccdda2a499acb6e29ebf22ac870a88b25bce050bf2ac1a474f3f96"
+    }
+  ],
+  "images": [
+    {
+      "source": "MySQL.assets/image-20260513094321532.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513094321532.png",
+      "sha256": "7a25030ad02a689d34364ce102b20f34a818b006232da09152be27acc3442921",
+      "bytes": 169136
+    },
+    {
+      "source": "MySQL.assets/image-20260513094528133.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513094528133.png",
+      "sha256": "6c580b39e2d9b1f9ea178b99f078c6834ac2778baa0b7009b62f5499a91875c3",
+      "bytes": 146007
+    },
+    {
+      "source": "MySQL.assets/image-20260513095306200.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513095306200.png",
+      "sha256": "5a7b8e692be2ea64bf7fcf66383f202018d55cc79e73e1fc3aa4c79d897cb4a0",
+      "bytes": 162411
+    },
+    {
+      "source": "MySQL.assets/image-20260513113937786.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513113937786.png",
+      "sha256": "8e38f0f0def510704abff23097cc7d05066fddb2b0e9f8c67b5bedcb906ba662",
+      "bytes": 250800
+    },
+    {
+      "source": "MySQL.assets/image-20260513114053978.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513114053978.png",
+      "sha256": "a2ebf4bd661c6d1b84f00a687d61ec98e7979ae3dd304987e65efd268ea374db",
+      "bytes": 316576
+    },
+    {
+      "source": "MySQL.assets/image-20260513143717647.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513143717647.png",
+      "sha256": "e19707f359970336f1974effec000827f8b31fa752f7d4fb80a87c9862d83083",
+      "bytes": 140667
+    },
+    {
+      "source": "MySQL.assets/image-20260513152952399.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513152952399.png",
+      "sha256": "398be828486532b015aa2f1482849f1d2f9fee8b3f3ba7f191b7fdc2b5b6ccb3",
+      "bytes": 187466
+    },
+    {
+      "source": "MySQL.assets/image-20260513153227504.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513153227504.png",
+      "sha256": "71ff54816c16ff28d543c6da9d33bf1eb2af6ff189b96a92f0e2107dfd265ee4",
+      "bytes": 161922
+    },
+    {
+      "source": "MySQL.assets/image-20260513154937911.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513154937911.png",
+      "sha256": "ceeeddf056c579d8eb071cdc25460d2dee5d9e7245cd3d14484d3d6f87f4112c",
+      "bytes": 278037
+    },
+    {
+      "source": "MySQL.assets/image-20260513160158852.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513160158852.png",
+      "sha256": "f936802fd98626084fe66e7a2237566c64fc713b407058e304e4e0cc937d70b8",
+      "bytes": 320160
+    },
+    {
+      "source": "MySQL.assets/image-20260513160353959.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260513160353959.png",
+      "sha256": "beb7b0af14c3442906dd30970ec2d7704050cf390f5aa8c55273963701220c6c",
+      "bytes": 223206
+    },
+    {
+      "source": "MySQL.assets/image-20260514135328653.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260514135328653.png",
+      "sha256": "0d93d83f4c161cfef4d9facbd4c881bfe6b3d3570b5b9325f6f18a5f5bbb3539",
+      "bytes": 323460
+    },
+    {
+      "source": "MySQL.assets/image-20260526094030976.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260526094030976.png",
+      "sha256": "e0783ad3aca1e27f89fa0fcb28d75af19d2addec386a3a95332b48780146fbc4",
+      "bytes": 28206
+    },
+    {
+      "source": "MySQL.assets/image-20260611090423007.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260611090423007.png",
+      "sha256": "e9717b37407c82610efc370e80537d979d1ad554147b2bbc7ca31a70eb59bb15",
+      "bytes": 101169
+    },
+    {
+      "source": "MySQL.assets/image-20260611091121131.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260611091121131.png",
+      "sha256": "ab86300fa45516514c2de7f17c6f151bcdf7105315e0013d97789aa7b8b8b8f8",
+      "bytes": 257709
+    },
+    {
+      "source": "MySQL.assets/image-20260612111548331.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260612111548331.png",
+      "sha256": "8115718fc22f91feced22b0032dc221eca8aa1d62b70b04a19f781fa60395b89",
+      "bytes": 213911
+    },
+    {
+      "source": "MySQL.assets/image-20260612112239359.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260612112239359.png",
+      "sha256": "22fb1c7d735f0f98b725e550be68b879e0245ce6dffe85e0ac5761b52db845bf",
+      "bytes": 249781
+    },
+    {
+      "source": "MySQL.assets/image-20260618141409158.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260618141409158.png",
+      "sha256": "139792d03753db8e921ad35d8bad41d82a42e7fdfd70a383decc990093610e22",
+      "bytes": 45071
+    },
+    {
+      "source": "MySQL.assets/image-20260618142112361.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260618142112361.png",
+      "sha256": "17a28bc55ab6d811fbdb563c9954e874c092f05fbcb6e2fddc7b807b14230882",
+      "bytes": 35470
+    },
+    {
+      "source": "MySQL.assets/image-20260618142502207.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260618142502207.png",
+      "sha256": "a2e5d444eba08822f547de635c6af0355185150c784a0788f252d351f0a799e3",
+      "bytes": 37301
+    },
+    {
+      "source": "MySQL.assets/image-20260619085125640.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260619085125640.png",
+      "sha256": "b8304b35df54ef1a8ce07e50d2a18fd7e4a08b4140d65fe9545de4da85f85312",
+      "bytes": 346642
+    },
+    {
+      "source": "MySQL.assets/image-20260621205754840.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260621205754840.png",
+      "sha256": "a20c7fd0c73443244ebf05a2cb1b6364b0fc3a582882fee2a5b8abb15af386e1",
+      "bytes": 117738
+    },
+    {
+      "source": "MySQL.assets/image-20260630090347763.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260630090347763.png",
+      "sha256": "cfac7c777715f23951df712d9fba1845f17e6668bca35a2fa6d6b1c5b1e7e64f",
+      "bytes": 170707
+    },
+    {
+      "source": "MySQL.assets/image-20260702085731002.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260702085731002.png",
+      "sha256": "b83b5b2fd49d9b7790ffdd1abc35d7666d13c7d81eaf4277fe6dc85241c1c18a",
+      "bytes": 311298
+    },
+    {
+      "source": "MySQL.assets/image-20260704182610736.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260704182610736.png",
+      "sha256": "489117d1abec679bd9b59b528148682e8e56600eb5d9ea63d429bdcfe14ca0e8",
+      "bytes": 109174
+    },
+    {
+      "source": "MySQL.assets/image-20260704184012611.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260704184012611.png",
+      "sha256": "b9943c347c4316e13d0824d22e0d3704322116890a4bd7ce173f5a9b6c3e04ed",
+      "bytes": 109245
+    },
+    {
+      "source": "MySQL.assets/image-20260704184146564.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260704184146564.png",
+      "sha256": "97e7b49eeb1eb5e62911130253d61383c931bbcd75bd40afdf29095477942296",
+      "bytes": 82782
+    },
+    {
+      "source": "MySQL.assets/image-20260704184200781-1783161721257-1.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260704184200781-1783161721257-1.png",
+      "sha256": "101133fd6efb05f45c2611253d71e0a88da8d5a8499cfeebf1b183ac311b74ed",
+      "bytes": 65209
+    },
+    {
+      "source": "MySQL.assets/image-20260704184214085.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260704184214085.png",
+      "sha256": "915f7eb2fa647977659f02df3c9edcecead44c0d865a67a5cff75c7752f2a9c2",
+      "bytes": 20445
+    },
+    {
+      "source": "MySQL.assets/image-20260705093158536.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260705093158536.png",
+      "sha256": "541a684516e2bbc028b9cf84d2e7171ec04e0f83d6f1cb7c09dc032e62a13707",
+      "bytes": 266725
+    },
+    {
+      "source": "MySQL.assets/image-20260705094222844.png",
+      "destination": "src/content/posts/mysql-notes/images/image-20260705094222844.png",
+      "sha256": "2500ca1adaafc23a6bb5cd71f04c3cb164ed4cb1755fe2ea90440f87fd449d04",
+      "bytes": 173145
+    }
+  ],
+  "formatChanges": {
+    "headings": 91,
+    "codeLanguageLabels": 44,
+    "highlightSpans": 2,
+    "tablePipeEscapes": 2,
+    "imageReferences": 31
+  },
+  "codeBlocksPreserved": 45,
+  "excluded": [
+    "课件目录、安装课件和 PPT",
+    "代码目录",
+    "MySQL.assets 内未被主笔记引用的 2 张图片"
+  ]
+}
