@@ -28,18 +28,7 @@ const legacyProfileConfig: ProfileConfig = {
 			url: "https://github.com/Playerkkk1",
 			showName: false,
 		},
-		{
-			name: "RSS",
-			icon: "fa7-solid:rss",
-			url: "/rss/",
-			showName: false,
-		},
-		{
-			name: "Atom",
-			icon: "fa7-solid:atom",
-			url: "/atom/",
-			showName: false,
-		},
+
 	],
 };
 
