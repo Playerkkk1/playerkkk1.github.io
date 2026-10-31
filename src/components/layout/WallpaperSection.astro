@@ -27,7 +27,12 @@ const wallpaperPosition = state.isFullscreenMode
 
 <!-- Wallpaper - 如果允许切换则始终渲染，否则只渲染当前模式 -->
 {(state.isWallpaperSwitchable || state.isBannerMode || state.isFullscreenMode || state.isOverlayMode) && (
-<div id="wallpaper-wrapper" class="absolute z-10 w-full overflow-hidden" style="--overlay-opacity: ${backgroundWallpaper.overlay?.opacity ?? 0.8}; --overlay-z-index: ${backgroundWallpaper.overlay?.zIndex ?? -1}; --overlay-blur: ${backgroundWallpaper.overlay?.blur ?? 0}px;">
+<div id="wallpaper-wrapper" class="absolute z-10 w-full overflow-hidden" data-custom-banner={backgroundWallpaper.banner?.image ? "" : undefined} style="--overlay-opacity: ${backgroundWallpaper.overlay?.opacity ?? 0.8}; --overlay-z-index: ${backgroundWallpaper.overlay?.zIndex ?? -1}; --overlay-blur: ${backgroundWallpaper.overlay?.blur ?? 0}px;">
+    {backgroundWallpaper.banner?.image && (
+        <div class="cms-banner-image absolute inset-0 z-[5]">
+            <ImageWrapper src={backgroundWallpaper.banner.image} alt="博客首页 Banner" class="h-full w-full object-cover" position={backgroundWallpaper.banner?.position} width={1920} loading="eager" fadeIn={false} />
+        </div>
+    )}
 <!-- 背景图片显示 -->
     {state.hasMultipleImages ? (
     /* 轮播模式：渲染所有图片为 slide-item */
@@ -633,3 +638,9 @@ const wallpaperPosition = state.isFullscreenMode
     <div id="banner-dim-container" class="hidden"></div>
 </>
 )}
+
+<style is:global>
+    .cms-banner-image { display: none; }
+    html[data-wallpaper-mode="banner"] .cms-banner-image { display: block; }
+    html[data-wallpaper-mode="banner"] #wallpaper-wrapper[data-custom-banner] #banner-images-container { visibility: hidden; }
+</style>

@@ -33,6 +33,18 @@ type DynamicData = {
 	published: Date;
 	pinned: boolean;
 	location: string;
+	title: string;
+	draft: boolean;
+	images: string[];
+};
+
+type VideoData = {
+	title: string;
+	description: string;
+	cover: string;
+	url: string;
+	published: Date;
+	draft: boolean;
 };
 
 type ProjectLink = {
@@ -99,9 +111,38 @@ const specCollection: ContentCollection<Record<string, never>> =
 const dynamicCollection: ContentCollection<DynamicData> = defineCollection({
 	loader: glob({ pattern: "**/*.md", base: "./src/content/dynamic" }),
 	schema: z.object({
-		published: z.date(),
+		published: z.coerce.date(),
 		pinned: z.boolean().optional().default(false),
 		location: z.string().optional().default(""),
+		title: z.string().optional().default(""),
+		draft: z.boolean().optional().default(false),
+		images: z
+			.array(z.string())
+			.nullish()
+			.transform((value) => value ?? []),
+	}),
+});
+
+const videosCollection: ContentCollection<VideoData> = defineCollection({
+	loader: glob({ pattern: "**/*.json", base: "./src/content/videos" }),
+	schema: z.object({
+		title: z.string().min(1),
+		description: z
+			.string()
+			.nullish()
+			.transform((value) => value ?? ""),
+		cover: z
+			.string()
+			.nullish()
+			.transform((value) => value ?? ""),
+		url: z.url().refine((value) => {
+			const target = new URL(value);
+			return (
+				target.protocol === "https:" && !target.username && !target.password
+			);
+		}, "视频链接必须为不含账号密码的 HTTPS 地址"),
+		published: z.coerce.date(),
+		draft: z.boolean().optional().default(false),
 	}),
 });
 
@@ -131,11 +172,13 @@ const projectsCollection: ContentCollection<ProjectData> = defineCollection({
 });
 
 export const collections: {
+	videos: typeof videosCollection;
 	dynamic: typeof dynamicCollection;
 	posts: typeof postsCollection;
 	spec: typeof specCollection;
 	projects: typeof projectsCollection;
 } = {
+	videos: videosCollection,
 	dynamic: dynamicCollection,
 	posts: postsCollection,
 	spec: specCollection,

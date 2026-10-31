@@ -1,0 +1,25 @@
+{
+	"banner": "",
+	"desktop": [
+		"/uploads/site/d1.avif",
+		"/uploads/site/d2.avif",
+		"/uploads/site/d3.avif",
+		"/uploads/site/d4.avif",
+		"/uploads/site/d5.avif",
+		"/uploads/site/d6.avif"
+	],
+	"mobile": [
+		"/uploads/site/m1.avif",
+		"/uploads/site/m2.avif",
+		"/uploads/site/m3.avif",
+		"/uploads/site/m4.avif",
+		"/uploads/site/m5.avif",
+		"/uploads/site/m6.avif"
+	],
+	"mode": "fullscreen",
+	"dimOpacity": 0.2,
+	"blur": 10,
+	"cardOpacity": 0.6,
+	"carousel": false,
+	"backgroundVideoEnabled": true
+}

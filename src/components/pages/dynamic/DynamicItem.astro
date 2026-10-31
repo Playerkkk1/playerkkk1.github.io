@@ -44,7 +44,7 @@ const profileUrl = url(dynamicConfig.profileUrl || "/about/");
 	id={anchorId}
 	class="page-entry card-base"
 	data-dynamic-entry
-	data-year={entry.data.published.getUTCFullYear()}
+	data-year={new Intl.DateTimeFormat("en", { year: "numeric", timeZone: siteConfig.timezone || "UTC" }).format(entry.data.published)}
 >
 	<article aria-labelledby={`${anchorId}-author`}>
 		<header class="page-entry-header">

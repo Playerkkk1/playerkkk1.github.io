@@ -1,5 +1,8 @@
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import sanitizeHtml from "sanitize-html";
+import { safeMediaUrl } from "@/utils/media-url";
+import { url } from "@/utils/url-utils";
 import {
 	dynamicSearchText,
 	dynamicSlug,
@@ -10,14 +13,30 @@ const markdownImagePattern = /!\[([^\]]*)\]\((\S+?)(?:\s+["']([^"']*)["'])?\)/g;
 
 export async function GET(): Promise<Response> {
 	const processor = await createMarkdownProcessor();
-	const dynamics = sortDynamics(await getCollection("dynamic"));
+	// 静态 API、动态页和侧栏共用此过滤，开发预览也不公开草稿。
+	const dynamics = sortDynamics(
+		await getCollection("dynamic", ({ data }) => !data.draft),
+	);
 	const data = await Promise.all(
 		dynamics.map(async (entry) => {
-			const images: Array<{ alt: string; src: string; title?: string }> = [];
+			const images: Array<{ alt: string; src: string; title?: string }> =
+				entry.data.images
+					.map(safeMediaUrl)
+					.filter(Boolean)
+					.map((src, index) => ({
+						alt: `${entry.data.title || "动态"} 配图 ${index + 1}`,
+						src: url(src),
+					}));
 			const markdown = (entry.body || "").replace(
 				markdownImagePattern,
 				(_match, alt: string, src: string, title?: string) => {
-					images.push({ alt, src, ...(title ? { title } : {}) });
+					const safeSrc = safeMediaUrl(src);
+					if (safeSrc)
+						images.push({
+							alt,
+							src: url(safeSrc),
+							...(title ? { title } : {}),
+						});
 					return "";
 				},
 			);
@@ -26,7 +45,7 @@ export async function GET(): Promise<Response> {
 			return {
 				id: dynamicSlug(entry.id),
 				published: entry.data.published.getTime(),
-				html: rendered.code,
+				html: sanitizeHtml(rendered.code),
 				images,
 				searchText: dynamicSearchText(entry),
 				pinned: entry.data.pinned || false,

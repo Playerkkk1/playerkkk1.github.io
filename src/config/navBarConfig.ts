@@ -58,6 +58,11 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		children: [
 			// 动态
 			LinkPresets.Dynamic,
+			{
+				name: "视频",
+				url: "/videos/",
+				icon: "material-symbols:play-circle-rounded",
+			},
 
 			// 项目
 			LinkPresets.Projects,

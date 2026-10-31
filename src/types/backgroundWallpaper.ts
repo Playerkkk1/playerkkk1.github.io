@@ -65,6 +65,7 @@ export type BackgroundWallpaperConfig = {
 
 	// Banner模式特有配置
 	banner?: {
+		image?: string; // 独立 Banner；留空沿用桌面/移动壁纸
 		position?:
 			| "top"
 			| "center"

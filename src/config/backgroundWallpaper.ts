@@ -1,6 +1,7 @@
 import type { BackgroundWallpaperConfig } from "@/types/backgroundWallpaper";
+import { cmsAppearance } from "../utils/cms-data";
 
-export const backgroundWallpaper: BackgroundWallpaperConfig = {
+const legacyWallpaper: BackgroundWallpaperConfig = {
 	// 壁纸模式："banner" 横幅壁纸，"fullscreen" 全屏壁纸，"overlay" 覆盖透明，"none" 纯色背景无壁纸
 	mode: "fullscreen",
 	// 是否启用背景视频播放，配置后将在导航栏显示视频播放按钮
@@ -195,5 +196,46 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				mobile: true,
 			},
 		},
+	},
+};
+
+// 保留旧资源与高级主题配置；CMS 只覆盖适合日常编辑的部分。
+const legacySources = legacyWallpaper.src as {
+	desktop: string[];
+	mobile: string[];
+	playerUrl?: string | string[];
+};
+
+export const backgroundWallpaper: BackgroundWallpaperConfig = {
+	...legacyWallpaper,
+	mode: cmsAppearance.mode ?? legacyWallpaper.mode,
+	playerEnable:
+		cmsAppearance.backgroundVideoEnabled ?? legacyWallpaper.playerEnable,
+	src: {
+		...legacySources,
+		desktop: cmsAppearance.desktop.length
+			? cmsAppearance.desktop
+			: legacySources.desktop,
+		mobile: cmsAppearance.mobile.length
+			? cmsAppearance.mobile
+			: legacySources.mobile,
+	},
+	banner: { ...legacyWallpaper.banner, image: cmsAppearance.banner },
+	common: {
+		...legacyWallpaper.common,
+		dimOpacity: cmsAppearance.dimOpacity ?? legacyWallpaper.common?.dimOpacity,
+		carousel: {
+			...legacyWallpaper.common?.carousel,
+			enable:
+				cmsAppearance.carousel ??
+				legacyWallpaper.common?.carousel?.enable ??
+				false,
+		},
+	},
+	overlay: {
+		...legacyWallpaper.overlay,
+		blur: cmsAppearance.blur ?? legacyWallpaper.overlay?.blur,
+		cardOpacity:
+			cmsAppearance.cardOpacity ?? legacyWallpaper.overlay?.cardOpacity,
 	},
 };

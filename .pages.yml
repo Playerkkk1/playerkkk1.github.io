@@ -7,6 +7,36 @@ media:
     output: /uploads/posts
     extensions: [png, jpg, jpeg, webp, avif, gif]
     rename: random
+  - name: site-images
+    label: 头像与壁纸
+    input: public/uploads/site
+    output: /uploads/site
+    extensions: [png, jpg, jpeg, webp, avif, gif]
+    rename: random
+  - name: dynamic-images
+    label: 动态图片
+    input: public/uploads/dynamics
+    output: /uploads/dynamics
+    extensions: [png, jpg, jpeg, webp, avif, gif]
+    rename: random
+  - name: video-covers
+    label: 视频封面
+    input: public/uploads/videos
+    output: /uploads/videos
+    extensions: [png, jpg, jpeg, webp, avif, gif]
+    rename: random
+  - name: music-audio
+    label: 音乐文件
+    input: public/assets/music
+    output: /assets/music
+    extensions: [mp3, m4a, aac, ogg, wav, flac]
+    rename: random
+  - name: music-covers
+    label: 音乐封面
+    input: public/assets/music/cover
+    output: /assets/music/cover
+    extensions: [png, jpg, jpeg, webp, avif]
+    rename: random
 
 content:
   - name: posts
@@ -81,6 +111,225 @@ content:
           format: markdown
           switcher: true
           media: post-images
+
+  - name: dynamics
+    label: 动态管理
+    type: collection
+    path: src/content/dynamic
+    format: yaml-frontmatter
+    subfolders: false
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, published, draft]
+      sort: [published, title]
+      default: { sort: published, order: desc }
+    fields:
+      - name: title
+        label: 管理标题
+        type: string
+        required: true
+        description: 用于后台识别和文件名；页面主要展示下面的短文字。
+      - name: published
+        label: 发布时间
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ssXXX"
+        description: 记录时间并倒序排列；不提供自动定时发布。
+      - name: draft
+        label: 草稿
+        type: boolean
+        default: true
+        description: 关闭后公开；草稿仍是公开 GitHub 仓库中的源文件。
+      - name: body
+        label: 短文字
+        type: text
+        required: true
+        description: 直接写短文字，可使用简单 Markdown。配图请在下方选择。
+      - name: images
+        label: 配图
+        type: image
+        options:
+          media: dynamic-images
+          multiple: { max: 9 }
+          unique: true
+
+  - name: profile
+    label: 个人资料
+    type: file
+    path: src/data/profile.json
+    format: json
+    fields:
+      - name: avatar
+        label: 头像
+        type: image
+        options: { media: site-images }
+        description: 上传或选择图片。清空时沿用旧头像。
+      - name: name
+        label: 昵称
+        type: string
+        required: true
+      - name: bio
+        label: 个人简介
+        type: text
+      - name: signature
+        label: 个人签名
+        type: text
+
+  - name: appearance
+    label: 博客外观
+    type: file
+    path: src/data/appearance.json
+    format: json
+    fields:
+      - name: banner
+        label: 首页 Banner
+        type: image
+        options: { media: site-images }
+        description: 横幅模式下使用的独立图片；留空沿用桌面及手机壁纸。全屏模式显示下方壁纸。
+      - name: desktop
+        label: 桌面背景壁纸
+        type: image
+        options:
+          media: site-images
+          multiple: true
+          unique: true
+        description: 可只选一张；多张默认随机，开启轮播后依次展示。全部清空则回退原有壁纸。
+      - name: mobile
+        label: 移动端背景图片
+        type: image
+        options:
+          media: site-images
+          multiple: true
+          unique: true
+        description: 建议竖图；全部清空则回退原有手机壁纸。
+      - name: mode
+        label: 默认背景模式
+        type: select
+        required: true
+        options:
+          values:
+            - { name: fullscreen, label: 全屏壁纸 }
+            - { name: banner, label: 首页横幅 }
+            - { name: overlay, label: 透明覆盖 }
+            - { name: none, label: 纯色背景 }
+      - name: dimOpacity
+        label: 横幅遮罩暗度
+        type: number
+        required: true
+        options: { min: 0, max: 1, step: 0.05 }
+      - name: blur
+        label: 背景模糊度
+        type: number
+        required: true
+        options: { min: 0, max: 30, step: 1 }
+      - name: cardOpacity
+        label: 卡片不透明度
+        type: number
+        required: true
+        options: { min: 0, max: 1, step: 0.05 }
+      - name: carousel
+        label: 壁纸轮播
+        type: boolean
+        description: 对桌面及手机多图有效；独立 Banner 为单图。
+      - name: backgroundVideoEnabled
+        label: 启用现有背景视频入口
+        type: boolean
+        description: 沿用主题原有背景视频，不影响视频页面或音乐播放器。
+
+  - name: videos
+    label: 视频管理
+    type: collection
+    path: src/content/videos
+    format: json
+    subfolders: false
+    filename:
+      template: "{year}-{month}-{day}-{primary}.json"
+      field: create
+    view:
+      primary: title
+      fields: [title, published, draft]
+      sort: [published, title]
+      default: { sort: published, order: desc }
+    fields:
+      - name: title
+        label: 视频标题
+        type: string
+        required: true
+      - name: description
+        label: 视频简介
+        type: text
+      - name: cover
+        label: 封面图片
+        type: image
+        options: { media: video-covers }
+      - name: url
+        label: 视频链接
+        type: string
+        required: true
+        pattern:
+          regex: '^https://[^\s]+$'
+          message: 请填写完整的 HTTPS 视频链接。
+        description: B站、YouTube 等链接跳转观看；HTTPS MP4/WebM/OGV 直链可在页内播放。不上传大视频到仓库。
+      - name: published
+        label: 发布时间
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ssXXX"
+      - name: draft
+        label: 草稿
+        type: boolean
+        default: true
+
+  - name: music
+    label: 音乐管理
+    type: file
+    path: src/data/music.json
+    format: json
+    fields:
+      - name: enabled
+        label: 启用音乐播放器
+        type: boolean
+      - name: volume
+        label: 默认音量
+        type: number
+        required: true
+        options: { min: 0, max: 1, step: 0.05 }
+        description: 访客已保存的音量优先；播放器不自动播放。
+      - name: playlist
+        label: 歌单（从上到下为播放顺序）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.name}"
+        description: 添加、删除或拖动条目调整顺序；清空歌单会显示空状态。
+        fields:
+          - name: name
+            label: 歌曲名称
+            type: string
+            required: true
+          - name: artist
+            label: 歌手或来源
+            type: string
+          - name: url
+            label: 音频文件
+            type: file
+            required: true
+            options:
+              media: music-audio
+              extensions: [mp3, m4a, aac, ogg, wav, flac]
+            description: 优先 MP3；其他格式播放能力取决于浏览器。建议单文件小于 10 MB。
+          - name: cover
+            label: 音乐封面
+            type: image
+            options: { media: music-covers }
 
   - name: redis-source
     label: Redis 旧文（源码编辑）

@@ -1,7 +1,8 @@
 import type { MusicPlayerConfig } from "../types/musicConfig";
+import { cmsMusic } from "../utils/cms-data";
 
 // 音乐播放器配置
-export const musicPlayerConfig: MusicPlayerConfig = {
+const legacyMusicPlayerConfig: MusicPlayerConfig = {
 	// 是否在导航栏显示音乐播放器入口
 	showInNavbar: true,
 
@@ -46,6 +47,26 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	// 2. 或者直接填入歌词字符串内容
 	// lrc: "[00:00.00]歌词内容...",
 	local: {
-		playlist: [],
+		playlist: [
+			{ name: "歌曲名称",
+      artist: "艺术家",
+      url: "/assets/music/song.mp3",
+      cover: "/assets/music/cover/cover.webp",
+      lrc: "/assets/music/lrc/song.lrc",}
+		],
+	},
+};
+
+export const musicPlayerConfig: MusicPlayerConfig = {
+	...legacyMusicPlayerConfig,
+	mode: "local",
+	showInNavbar: cmsMusic.enabled,
+	showInSidebar: cmsMusic.enabled,
+	volume: cmsMusic.volume,
+	local: {
+		playlist: cmsMusic.playlist?.map((song) => ({
+			...song,
+			artist: song.artist ?? "",
+		})) ?? legacyMusicPlayerConfig.local?.playlist ?? [],
 	},
 };
