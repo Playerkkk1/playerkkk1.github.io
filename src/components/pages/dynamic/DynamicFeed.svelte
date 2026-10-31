@@ -2,6 +2,7 @@
 import { onMount, tick } from "svelte";
 import ClientPagination from "@/components/common/ClientPagination.svelte";
 import { formatTimezoneOffset } from "@/utils/date-utils";
+import { dynamicAnchor } from "@/utils/dynamic-utils";
 import { fetchMemos } from "@/utils/memos-adapter";
 import { registerDynamicGallery } from "./dynamic-gallery";
 import { registerDynamicInlineComments } from "./dynamic-inline-comments";
@@ -95,8 +96,7 @@ function applyFilters(resetPage = true) {
 	const year = yearSelect?.value || "all";
 	filtered = entries.filter(
 		(entry) =>
-			(year === "all" ||
-				entryYear(entry.published) === year) &&
+			(year === "all" || entryYear(entry.published) === year) &&
 			(!query || entry.searchText.includes(query)),
 	);
 	if (resetPage) currentPage = 1;
@@ -113,9 +113,7 @@ function populateYears() {
 	all.textContent = allYearsText;
 	yearSelect.append(all);
 	const years = [
-		...new Set(
-			entries.map((entry) => entryYear(entry.published)),
-		),
+		...new Set(entries.map((entry) => entryYear(entry.published))),
 	];
 	for (const year of years) {
 		const option = document.createElement("option");
@@ -130,9 +128,9 @@ function createItem(entry: DynamicData) {
 	const fragment = template.content.cloneNode(true) as DocumentFragment;
 	const root = fragment.querySelector<HTMLElement>("[data-dynamic-entry]");
 	if (!root) return null;
-	const anchorId = `dynamic-${entry.id.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
+	const anchorId = dynamicAnchor(entry.id);
 	const permalinkUrl = new URL(window.location.href);
-	permalinkUrl.hash = anchorId;
+	permalinkUrl.hash = encodeURIComponent(anchorId);
 	const permalink = `${permalinkUrl.pathname}${permalinkUrl.search}${permalinkUrl.hash}`;
 	root.id = anchorId;
 	root.dataset.year = entryYear(entry.published);
@@ -308,8 +306,7 @@ onMount(() => {
 			const anchorId = decodeURIComponent(window.location.hash.slice(1));
 			if (anchorId) {
 				const anchorIndex = filtered.findIndex(
-					(entry) =>
-						`dynamic-${entry.id.replace(/[^a-zA-Z0-9_-]/g, "-")}` === anchorId,
+					(entry) => dynamicAnchor(entry.id) === anchorId,
 				);
 				if (anchorIndex >= 0) {
 					currentPage = Math.floor(anchorIndex / itemsPerPage) + 1;

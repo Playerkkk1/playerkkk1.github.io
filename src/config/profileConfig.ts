@@ -47,6 +47,7 @@ export const profileConfig: ProfileConfig = {
 	...legacyProfileConfig,
 	avatar: cmsProfile.avatar || legacyProfileConfig.avatar,
 	name: cmsProfile.name?.trim() || legacyProfileConfig.name,
-	bio: cmsProfile.bio ?? legacyProfileConfig.bio,
+	// Pages CMS 保存时移除空字符串；缺失简介表示用户主动清空。
+	bio: cmsProfile.bio ?? "",
 	signature: cmsProfile.signature ?? "",
 };

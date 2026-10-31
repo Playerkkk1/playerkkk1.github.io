@@ -11,6 +11,7 @@ import {
 } from "@/utils/image-utils";
 import { getLqipProps } from "@/utils/lqip-utils";
 import { url } from "@/utils/url-utils";
+import { safeMediaUrl } from "@/utils/media-url";
 
 interface Props {
 	id?: string;
@@ -98,7 +99,7 @@ const imageClass = fadeIn
 const imageStyle = `object-position: ${position}`;
 
 // 检查是否需要添加 referrerpolicy（仅对非本地图片）
-const fullSrc = isPublic ? url(src) : src;
+const fullSrc = isPublic ? url(safeMediaUrl(src)) : src;
 const referrerPolicy =
 	!isLocal && shouldAddNoReferrer(fullSrc) ? "no-referrer" : undefined;
 
@@ -148,5 +149,5 @@ const lqipProps = isLocal
             {...responsiveProps}
         />
     )}
-    {!isLocal && <img src={isPublic ? url(src) : src} alt={alt || ""} class={imageClass} style={imageStyle} loading={loading} fetchpriority={fetchpriority} data-cover-img={dataCoverImg ? true : undefined} referrerpolicy={referrerPolicy} />}
+    {!isLocal && <img src={fullSrc} alt={alt || ""} class={imageClass} style={imageStyle} loading={loading} fetchpriority={fetchpriority} data-cover-img={dataCoverImg ? true : undefined} referrerpolicy={referrerPolicy} />}
 </div>

@@ -3,6 +3,7 @@ import { musicPlayerConfig } from "@/config/musicConfig";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import { url } from "@/utils/url-utils";
+import { safeMediaUrl } from "@/utils/media-url";
 
 const config = musicPlayerConfig;
 
@@ -13,11 +14,11 @@ const localPlaylist =
 				return {
 					name: song.name,
 					artist: song.artist,
-					url: isFullUrl(song.url) ? song.url : url(song.url),
+					url: isFullUrl(song.url) ? song.url : url(safeMediaUrl(song.url)),
 					pic: song.cover
 						? isFullUrl(song.cover)
 							? song.cover
-							: url(song.cover)
+							: url(safeMediaUrl(song.cover))
 						: undefined,
 					lrc: song.lrc
 						? isFullUrl(song.lrc)
@@ -104,13 +105,16 @@ const managerConfigStr = JSON.stringify({
 
     // ── State ────────────────────────────────────────────────
     var loadVersion = 0; // incremented on each loadTrack to discard stale play() results
+    var savedVolume = parseFloat(localStorage.getItem('music-player-volume'));
+    var failedTracks = new Set();
+    var requestedPlayback = false;
     var state = {
         playlist: [],
         currentIndex: 0,
         isPlaying: false,
         playMode: 0, // 0: list, 1: one, 2: random
-        volume: localStorage.getItem('music-player-volume') !== null
-            ? parseFloat(localStorage.getItem('music-player-volume'))
+        volume: Number.isFinite(savedVolume)
+            ? Math.max(0, Math.min(1, savedVolume))
             : (config.volume ?? 0.7),
         isMuted: false,
         lyrics: [],
@@ -208,14 +212,16 @@ const managerConfigStr = JSON.stringify({
 
     function tryPlayCurrentTrackUrl(autoPlay, ver) {
         if (ver !== loadVersion) return;
+        requestedPlayback = !!autoPlay;
         var playUrl = currentTrackUrls[currentTrackUrlIndex];
         audio.src = playUrl;
 
         if (autoPlay) {
             audio.play().then(function () {
-                if (ver !== loadVersion) return; // stale, discard
+                if (ver !== loadVersion || !requestedPlayback) return; // stale or paused
                 state.isPlaying = true;
                 state.error = null;
+                failedTracks.clear();
                 emit('fm:play-state', { isPlaying: true });
             }).catch(function (e) {
                 if (ver !== loadVersion) return; // stale, discard
@@ -229,8 +235,12 @@ const managerConfigStr = JSON.stringify({
     }
 
     // ── Track loading ────────────────────────────────────────
-    function loadTrack(index, autoPlay) {
-        if (index < 0 || index >= state.playlist.length) return;
+    function loadTrack(index, autoPlay, recovering) {
+        if (!Number.isInteger(index) || index < 0 || index >= state.playlist.length) return;
+        if (!recovering) failedTracks.clear();
+        state.error = null;
+        state.isPlaying = false;
+        emit('fm:play-state', { isPlaying: false });
         state.currentIndex = index;
         var track = state.playlist[index];
         var ver = ++loadVersion;
@@ -266,15 +276,28 @@ const managerConfigStr = JSON.stringify({
 
     // ── Playback controls ────────────────────────────────────
     function togglePlay() {
+        if (!state.playlist.length) return;
         if (audio.paused) {
+            if (state.error) {
+                loadTrack(state.currentIndex, true);
+                return;
+            }
+            requestedPlayback = true;
+            var ver = loadVersion;
             audio.play().then(function () {
+                if (ver !== loadVersion || !requestedPlayback) return;
                 state.isPlaying = true;
+                state.error = null;
+                failedTracks.clear();
                 emit('fm:play-state', { isPlaying: true });
             }).catch(function (e) {
                 if (e.name === 'AbortError') return;
                 console.warn('Playback failed:', e);
             });
         } else {
+            requestedPlayback = false;
+            if (errorSkipTimeout) clearTimeout(errorSkipTimeout);
+            errorSkipTimeout = null;
             audio.pause();
             state.isPlaying = false;
             emit('fm:play-state', { isPlaying: false });
@@ -282,6 +305,7 @@ const managerConfigStr = JSON.stringify({
     }
 
     function playNext(auto) {
+        if (!state.playlist.length) return;
         if (state.playMode === 1 && auto) {
             audio.currentTime = 0;
             audio.play();
@@ -297,6 +321,7 @@ const managerConfigStr = JSON.stringify({
     }
 
     function playPrev() {
+        if (!state.playlist.length) return;
         var prevIndex;
         if (state.playMode === 2) {
             prevIndex = Math.floor(Math.random() * state.playlist.length);
@@ -316,6 +341,7 @@ const managerConfigStr = JSON.stringify({
     }
 
     function setVolume(val) {
+        if (!Number.isFinite(val)) return;
         val = Math.max(0, Math.min(1, val));
         state.volume = val;
         state.isMuted = false;
@@ -384,20 +410,33 @@ const managerConfigStr = JSON.stringify({
 
     audio.addEventListener('error', function () {
         var ver = loadVersion;
+        var shouldPlay = requestedPlayback;
+        audio.pause();
+        state.isPlaying = false;
+        emit('fm:play-state', { isPlaying: false });
         if (currentTrackUrlIndex < currentTrackUrls.length - 1) {
             currentTrackUrlIndex++;
             console.warn('Playback failed, trying fallback URL: ' + currentTrackUrls[currentTrackUrlIndex]);
-            tryPlayCurrentTrackUrl(true, ver);
+            tryPlayCurrentTrackUrl(shouldPlay, ver);
         } else {
             state.error = 'Audio playback error';
-            emit('fm:error', { message: '播放失败，即将自动跳过...' });
-
             if (errorSkipTimeout) clearTimeout(errorSkipTimeout);
-            errorSkipTimeout = setTimeout(function () {
-                if (ver === loadVersion) {
-                    playNext(true);
-                }
-            }, 2000);
+            errorSkipTimeout = null;
+            failedTracks.add(state.currentIndex);
+            var nextIndex = -1;
+            for (var step = 1; step < state.playlist.length; step++) {
+                var candidate = (state.currentIndex + step) % state.playlist.length;
+                if (!failedTracks.has(candidate)) { nextIndex = candidate; break; }
+            }
+            if (shouldPlay && nextIndex >= 0) {
+                emit('fm:error', { message: '播放失败，即将尝试下一首...' });
+                errorSkipTimeout = setTimeout(function () {
+                    if (ver === loadVersion && requestedPlayback) loadTrack(nextIndex, true, true);
+                }, 2000);
+            } else {
+                requestedPlayback = false;
+                emit('fm:error', { message: '音频加载失败，请切换歌曲或稍后重试。' });
+            }
         }
     });
 

@@ -10,6 +10,7 @@ import { formatDynamicDate } from "@/utils/date-utils";
 import { fetchWithDedup } from "@/utils/fetch-dedup";
 import { fetchMemos } from "@/utils/memos-adapter";
 import { url } from "@/utils/url-utils";
+import { dynamicAnchor } from "@/utils/dynamic-utils";
 
 interface DynamicEntry {
 	id: string;
@@ -106,7 +107,7 @@ function formatDate(timestamp: number): string {
 			{@const text = getPlainText(entry.html)}
 			{@const hasImage = (entry.images?.length ?? 0) > 0}
 			<a
-				href={url(`/dynamic/#dynamic-${entry.id}`)}
+				href={url(`/dynamic/#${encodeURIComponent(dynamicAnchor(entry.id))}`)}
 				class="group flex min-w-0 min-h-16 items-center gap-3 rounded-lg p-2
 					text-neutral-700/75 dark:text-neutral-300/75
 					hover:bg-(--btn-plain-bg-hover) hover:text-(--primary)

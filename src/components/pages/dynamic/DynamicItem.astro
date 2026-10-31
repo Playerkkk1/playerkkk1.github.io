@@ -31,7 +31,7 @@ const timezone = formatTimezoneOffset(
 	siteConfig.timezone || "UTC",
 	entry.data.published,
 );
-const permalink = detailUrl || `#${anchorId}`;
+const permalink = detailUrl || `#${encodeURIComponent(anchorId)}`;
 const location = entry.data.location.trim();
 const profileLabel = i18n(I18nKey.dynamicProfile).replace(
 	"{name}",

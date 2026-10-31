@@ -47,13 +47,7 @@ const legacyMusicPlayerConfig: MusicPlayerConfig = {
 	// 2. 或者直接填入歌词字符串内容
 	// lrc: "[00:00.00]歌词内容...",
 	local: {
-		playlist: [
-			{ name: "歌曲名称",
-      artist: "艺术家",
-      url: "/assets/music/song.mp3",
-      cover: "/assets/music/cover/cover.webp",
-      lrc: "/assets/music/lrc/song.lrc",}
-		],
+		playlist: [],
 	},
 };
 
@@ -64,9 +58,10 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	showInSidebar: cmsMusic.enabled,
 	volume: cmsMusic.volume,
 	local: {
-		playlist: cmsMusic.playlist?.map((song) => ({
-			...song,
-			artist: song.artist ?? "",
-		})) ?? legacyMusicPlayerConfig.local?.playlist ?? [],
+		playlist:
+			cmsMusic.playlist?.map((song) => ({
+				...song,
+				artist: song.artist ?? "",
+			})) ?? [],
 	},
 };

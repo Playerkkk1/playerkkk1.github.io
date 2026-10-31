@@ -163,6 +163,7 @@ content:
     type: file
     path: src/data/profile.json
     format: json
+    operations: { delete: false }
     fields:
       - name: avatar
         label: 头像
@@ -185,6 +186,7 @@ content:
     type: file
     path: src/data/appearance.json
     format: json
+    operations: { delete: false }
     fields:
       - name: banner
         label: 首页 Banner
@@ -292,6 +294,7 @@ content:
     type: file
     path: src/data/music.json
     format: json
+    operations: { delete: false }
     fields:
       - name: enabled
         label: 启用音乐播放器
