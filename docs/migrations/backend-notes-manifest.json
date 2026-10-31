@@ -1,0 +1,655 @@
+{
+  "source": "后端学习笔记.md",
+  "sourceSha256": "b5e2993bdd6bcab2c599dfd1d33c4a011dcfd5c073070091afd4f7b5201f3d64",
+  "importedOn": "2026-11-01",
+  "publishedDateMeaning": "博客迁入日期，原后端学习日期在文章正文及清单中保留",
+  "series": "后端学习笔记",
+  "articles": [
+    {
+      "order": 1,
+      "sourceLines": [
+        1,
+        316
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 2026.10.09 Spring Boot 后端学习笔记"
+        },
+        {
+          "line": 3,
+          "text": "## 一、Spring IoC 与 DI"
+        },
+        {
+          "line": 5,
+          "text": "### 1. IoC（控制反转）"
+        },
+        {
+          "line": 18,
+          "text": "### 2. DI（依赖注入）"
+        },
+        {
+          "line": 48,
+          "text": "## 二、Service 接口与实现类"
+        },
+        {
+          "line": 50,
+          "text": "### 1. 后端分层结构"
+        },
+        {
+          "line": 64,
+          "text": "### 2. Service 接口"
+        },
+        {
+          "line": 83,
+          "text": "### 3. Service 实现类"
+        },
+        {
+          "line": 103,
+          "text": "### 4. Java 接口知识复习"
+        },
+        {
+          "line": 113,
+          "text": "## 三、Spring 多 Bean 注入与降低耦合"
+        },
+        {
+          "line": 115,
+          "text": "### 1. 多 Bean 问题"
+        },
+        {
+          "line": 127,
+          "text": "### 2. @Primary"
+        },
+        {
+          "line": 138,
+          "text": "### 3. @Qualifier"
+        },
+        {
+          "line": 149,
+          "text": "### 4. 降低耦合的核心思想"
+        },
+        {
+          "line": 158,
+          "text": "## 四、MyBatis XML 映射"
+        },
+        {
+          "line": 160,
+          "text": "### 1. 注解与 XML 的区别"
+        },
+        {
+          "line": 188,
+          "text": "### 2. XML 映射文件配置"
+        },
+        {
+          "line": 222,
+          "text": "### 3. XML CRUD 标签"
+        },
+        {
+          "line": 231,
+          "text": "### 4. 查询操作"
+        },
+        {
+          "line": 246,
+          "text": "### 5. 新增操作"
+        },
+        {
+          "line": 261,
+          "text": "### 6. 修改操作"
+        },
+        {
+          "line": 274,
+          "text": "### 7. 删除操作"
+        },
+        {
+          "line": 287,
+          "text": "### 8. XML 映射注意事项"
+        },
+        {
+          "line": 298,
+          "text": "## 六、今日项目总结"
+        },
+        {
+          "line": 300,
+          "text": "### 已完成的代码工作"
+        },
+        {
+          "line": 309,
+          "text": "### 今日核心收获"
+        }
+      ],
+      "learningDate": "2026-10-09",
+      "title": "后端学习笔记 01：Spring IoC、业务分层与 MyBatis XML",
+      "destination": "src/content/posts/backend-notes/01-spring-ioc-and-mybatis.md",
+      "route": "/posts/backend-notes/01-spring-ioc-and-mybatis/",
+      "images": [
+        "src/content/posts/backend-notes/images/01-spring-ioc-and-mybatis/01.png",
+        "src/content/posts/backend-notes/images/01-spring-ioc-and-mybatis/02.png",
+        "src/content/posts/backend-notes/images/01-spring-ioc-and-mybatis/03.png"
+      ],
+      "codeBlocks": 17,
+      "sha256": "9f1222174bf24b167bc7c1517766ed4e3dfbebe47fcb4225fb0122ca6767d1d1"
+    },
+    {
+      "order": 2,
+      "sourceLines": [
+        317,
+        330
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 2026/10/10"
+        },
+        {
+          "line": 3,
+          "text": "## 配置文件格式"
+        },
+        {
+          "line": 11,
+          "text": "## 跟练黑马的web-ai项目"
+        }
+      ],
+      "learningDate": "2026-10-10",
+      "title": "后端学习笔记 02：配置文件与项目跟练",
+      "destination": "src/content/posts/backend-notes/02-configuration-files.md",
+      "route": "/posts/backend-notes/02-configuration-files/",
+      "images": [
+        "src/content/posts/backend-notes/images/02-configuration-files/01.png",
+        "src/content/posts/backend-notes/images/02-configuration-files/02.png"
+      ],
+      "codeBlocks": 0,
+      "sha256": "f00cd9fc313c5b103b81cd405709152519e051738d8f47f7051c65310c4aa82b"
+    },
+    {
+      "order": 3,
+      "sourceLines": [
+        331,
+        373
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 26/10/12"
+        },
+        {
+          "line": 3,
+          "text": "## mybatis配置驼峰命名映射"
+        },
+        {
+          "line": 12,
+          "text": "## 简单参数接收方式"
+        }
+      ],
+      "learningDate": "2026-10-12",
+      "title": "后端学习笔记 03：驼峰映射与请求参数",
+      "destination": "src/content/posts/backend-notes/03-request-parameters.md",
+      "route": "/posts/backend-notes/03-request-parameters/",
+      "images": [],
+      "codeBlocks": 4,
+      "sha256": "dc34d1ec707c0b2cfcd58f5b3dd4490fd6985f276a98f54b68e523838d62833d"
+    },
+    {
+      "order": 4,
+      "sourceLines": [
+        374,
+        393
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/13"
+        },
+        {
+          "line": 3,
+          "text": "## 如何接收Json格式请求参数"
+        }
+      ],
+      "learningDate": "2026-10-13",
+      "title": "后端学习笔记 04：JSON 请求体",
+      "destination": "src/content/posts/backend-notes/04-json-request-body.md",
+      "route": "/posts/backend-notes/04-json-request-body/",
+      "images": [],
+      "codeBlocks": 1,
+      "sha256": "8f6b7748ccefefba36cb43f88a067ed7e458284eaaa52f7f8cabf1d933a4a214"
+    },
+    {
+      "order": 5,
+      "sourceLines": [
+        394,
+        435
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/14"
+        },
+        {
+          "line": 3,
+          "text": "## 查询回显"
+        },
+        {
+          "line": 5,
+          "text": "### 接收路径参数"
+        },
+        {
+          "line": 9,
+          "text": "### 在url中可以携带多个路径参数  如/dept/1/0"
+        },
+        {
+          "line": 16,
+          "text": "## @RequestMapping()注解"
+        },
+        {
+          "line": 39,
+          "text": "## 日志技术"
+        }
+      ],
+      "learningDate": "2026-10-14",
+      "title": "后端学习笔记 05：路径参数、请求映射与日志",
+      "destination": "src/content/posts/backend-notes/05-path-variables-and-logging.md",
+      "route": "/posts/backend-notes/05-path-variables-and-logging/",
+      "images": [
+        "src/content/posts/backend-notes/images/05-path-variables-and-logging/01.jpg",
+        "src/content/posts/backend-notes/images/05-path-variables-and-logging/02.png"
+      ],
+      "codeBlocks": 2,
+      "sha256": "6a65cfd25c26f886fb15ad9003c7efed6479702e6acd05469ac4324a13e193a3"
+    },
+    {
+      "order": 6,
+      "sourceLines": [
+        436,
+        441
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/17"
+        },
+        {
+          "line": 3,
+          "text": "## 动态sql语句"
+        }
+      ],
+      "learningDate": "2026-10-17",
+      "title": "后端学习笔记 06：动态 SQL",
+      "destination": "src/content/posts/backend-notes/06-dynamic-sql.md",
+      "route": "/posts/backend-notes/06-dynamic-sql/",
+      "images": [
+        "src/content/posts/backend-notes/images/06-dynamic-sql/01.png"
+      ],
+      "codeBlocks": 0,
+      "sha256": "880c9bac2516650b979a8761575b6853ab8d2226222d6bba614692a35bf373e8"
+    },
+    {
+      "order": 7,
+      "sourceLines": [
+        442,
+        447
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/20"
+        }
+      ],
+      "learningDate": "2026-10-20",
+      "title": "后端学习笔记 07：事务基础",
+      "destination": "src/content/posts/backend-notes/07-transactions.md",
+      "route": "/posts/backend-notes/07-transactions/",
+      "images": [
+        "src/content/posts/backend-notes/images/07-transactions/01.png"
+      ],
+      "codeBlocks": 0,
+      "sha256": "ed39612f215636fe3ad049166dc6961c76ffb8c3f69188b6df5f5f85726795ea"
+    },
+    {
+      "order": 8,
+      "sourceLines": [
+        448,
+        504
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/21"
+        },
+        {
+          "line": 3,
+          "text": "### 一、HttpClient：发送 HTTP 请求"
+        },
+        {
+          "line": 17,
+          "text": "### 二、Jackson：JSON 数据转换"
+        },
+        {
+          "line": 33,
+          "text": "### 三、最值得记住的代码"
+        }
+      ],
+      "learningDate": "2026-10-21",
+      "title": "后端学习笔记 08：HttpClient 与 Jackson",
+      "destination": "src/content/posts/backend-notes/08-http-client-and-jackson.md",
+      "route": "/posts/backend-notes/08-http-client-and-jackson/",
+      "images": [],
+      "codeBlocks": 1,
+      "sha256": "c7a5c6e98846d4f9b80a1a6d94d37efaa2ce99029c9b09e5cd188d7074cffb21"
+    },
+    {
+      "order": 9,
+      "sourceLines": [
+        505,
+        521
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/22"
+        }
+      ],
+      "learningDate": "2026-10-22",
+      "title": "后端学习笔记 09：AI 接口异常处理与文件上传",
+      "destination": "src/content/posts/backend-notes/09-ai-errors-and-file-upload.md",
+      "route": "/posts/backend-notes/09-ai-errors-and-file-upload/",
+      "images": [
+        "src/content/posts/backend-notes/images/09-ai-errors-and-file-upload/01.png"
+      ],
+      "codeBlocks": 0,
+      "sha256": "01375359ed97828b8990939cd56c9e8402799018769ccc61f04d8f9ee6a82ef7"
+    },
+    {
+      "order": 10,
+      "sourceLines": [
+        522,
+        607
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/23"
+        },
+        {
+          "line": 3,
+          "text": "## 事务注解"
+        },
+        {
+          "line": 24,
+          "text": "## 动态SQl——foreach"
+        },
+        {
+          "line": 39,
+          "text": "## 登录会话"
+        },
+        {
+          "line": 51,
+          "text": "### Session 与 Cookie 的区别"
+        },
+        {
+          "line": 59,
+          "text": "### Cookie（了解就行）"
+        },
+        {
+          "line": 63,
+          "text": "### Session（了解就行）"
+        },
+        {
+          "line": 67,
+          "text": "### 令牌（Token）"
+        }
+      ],
+      "learningDate": "2026-10-23",
+      "title": "后端学习笔记 10：事务注解、foreach 与登录会话",
+      "destination": "src/content/posts/backend-notes/10-transactional-and-sessions.md",
+      "route": "/posts/backend-notes/10-transactional-and-sessions/",
+      "images": [
+        "src/content/posts/backend-notes/images/10-transactional-and-sessions/01.png",
+        "src/content/posts/backend-notes/images/10-transactional-and-sessions/02.png",
+        "src/content/posts/backend-notes/images/10-transactional-and-sessions/03.png",
+        "src/content/posts/backend-notes/images/10-transactional-and-sessions/04.png"
+      ],
+      "codeBlocks": 1,
+      "sha256": "bf12e8f82bb489bc272b1e2538ac408ed3df32ec7b90d2e5f398005328d9e409"
+    },
+    {
+      "order": 11,
+      "sourceLines": [
+        608,
+        694
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/27"
+        },
+        {
+          "line": 3,
+          "text": "## AOP知识点"
+        },
+        {
+          "line": 20,
+          "text": "## AOP 常用注解"
+        },
+        {
+          "line": 33,
+          "text": "## 切入点表达式"
+        },
+        {
+          "line": 35,
+          "text": "### 1. execution 表达式"
+        },
+        {
+          "line": 51,
+          "text": "### 2. @Pointcut 注解"
+        },
+        {
+          "line": 76,
+          "text": "### 3. @annotation 表达式"
+        }
+      ],
+      "learningDate": "2026-10-27",
+      "title": "后端学习笔记 11：Spring AOP",
+      "destination": "src/content/posts/backend-notes/11-spring-aop.md",
+      "route": "/posts/backend-notes/11-spring-aop/",
+      "images": [],
+      "codeBlocks": 4,
+      "sha256": "265a2f20efa220c692eccaad04904f282650d8cab23dd471640c41eab4213046"
+    },
+    {
+      "order": 12,
+      "sourceLines": [
+        695,
+        744
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/28"
+        },
+        {
+          "line": 5,
+          "text": "### 一、今日完成内容"
+        },
+        {
+          "line": 18,
+          "text": "### 二、今天最重要的知识点"
+        },
+        {
+          "line": 47,
+          "text": "### 三、今日实际成果"
+        }
+      ],
+      "learningDate": "2026-10-28",
+      "title": "后端学习笔记 12：Linux 与 JavaWeb 部署基础",
+      "destination": "src/content/posts/backend-notes/12-linux-deployment-basics.md",
+      "route": "/posts/backend-notes/12-linux-deployment-basics/",
+      "images": [],
+      "codeBlocks": 2,
+      "sha256": "57d9152ddb7e374d4adc8e27c67f51afe20eb877b3fe5abff976f173063533ed"
+    },
+    {
+      "order": 13,
+      "sourceLines": [
+        745,
+        810
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "# 10/29"
+        },
+        {
+          "line": 3,
+          "text": "## 启动与停止nginx"
+        },
+        {
+          "line": 20,
+          "text": "## 后端部署"
+        },
+        {
+          "line": 24,
+          "text": "### 1.准备 Linux 环境"
+        },
+        {
+          "line": 28,
+          "text": "### 2.配置 MySQL"
+        },
+        {
+          "line": 30,
+          "text": "### 3.检查 JAR 中的配置文件"
+        },
+        {
+          "line": 32,
+          "text": "### 4.准备并上传 JAR 包"
+        },
+        {
+          "line": 34,
+          "text": "### 5.前台启动 Spring Boot"
+        },
+        {
+          "line": 44,
+          "text": "### nohup 后台运行（重点）"
+        }
+      ],
+      "learningDate": "2026-10-29",
+      "title": "后端学习笔记 13：Nginx 与后端部署",
+      "destination": "src/content/posts/backend-notes/13-nginx-and-backend-deployment.md",
+      "route": "/posts/backend-notes/13-nginx-and-backend-deployment/",
+      "images": [
+        "src/content/posts/backend-notes/images/13-nginx-and-backend-deployment/01.png",
+        "src/content/posts/backend-notes/images/13-nginx-and-backend-deployment/02.png",
+        "src/content/posts/backend-notes/images/13-nginx-and-backend-deployment/03.png"
+      ],
+      "codeBlocks": 4,
+      "sha256": "0d7b8c26c38487267c1758215d199dc0fa735ef1f9e3f57b14ed50069cadc2de"
+    }
+  ],
+  "images": [
+    {
+      "source": "后端学习笔记.assets/d9d52db90cf8c526fa50a718241c88c2-1791539070639-2.png",
+      "destination": "src/content/posts/backend-notes/images/01-spring-ioc-and-mybatis/01.png",
+      "sha256": "69804d2dfc23f35d6cdc05aba57b9774e886571aae43f46c2f32e825d0f858eb",
+      "bytes": 149250
+    },
+    {
+      "source": "后端学习笔记.assets/5496b9a886f866bddc47c64b59a68fe8.png",
+      "destination": "src/content/posts/backend-notes/images/01-spring-ioc-and-mybatis/02.png",
+      "sha256": "567992414b5c40af5ee1503d4a6fe12ea239cef0f9146fe8acc441e767c0cac8",
+      "bytes": 333485
+    },
+    {
+      "source": "后端学习笔记.assets/dded20788f9912508bed75153b39f5fe.png",
+      "destination": "src/content/posts/backend-notes/images/01-spring-ioc-and-mybatis/03.png",
+      "sha256": "d2d1a56efc7df3c4371cb4b4f620f1a62ba6f910dcfdfccb3d9f437229809bd8",
+      "bytes": 64207
+    },
+    {
+      "source": "后端学习笔记.assets/257f28e90f3d3cf9506148dc64b16bc9.png",
+      "destination": "src/content/posts/backend-notes/images/02-configuration-files/01.png",
+      "sha256": "36543b20daabaf5d0c81b444019256ace2567959b86e0daa96967cf8dfe8414c",
+      "bytes": 119350
+    },
+    {
+      "source": "后端学习笔记.assets/8e5f396d7a1178df85cc0a3a723b5e84.png",
+      "destination": "src/content/posts/backend-notes/images/02-configuration-files/02.png",
+      "sha256": "4280471c8506af506091d3847b73bf0b5c61a28782e2e01f29db950acd71c6bf",
+      "bytes": 446668
+    },
+    {
+      "source": "后端学习笔记.assets/cde80e85f58f1d71bc674f48d6802867.jpg",
+      "destination": "src/content/posts/backend-notes/images/05-path-variables-and-logging/01.jpg",
+      "sha256": "1d828e2a197a8defac2b5a9186417989b10b673a4ab1e3634e2ca29156dede01",
+      "bytes": 156593
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261014134751756.png",
+      "destination": "src/content/posts/backend-notes/images/05-path-variables-and-logging/02.png",
+      "sha256": "cf22e5c67288e0232d1a027f676605800339cc98013a7c1902b66b3c58270739",
+      "bytes": 178069
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261017151934699.png",
+      "destination": "src/content/posts/backend-notes/images/06-dynamic-sql/01.png",
+      "sha256": "c16d2f0a208ccac3ab35de5ce1cb64465991d37dc095e731abe6eaff2897adcf",
+      "bytes": 275574
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261020215830024.png",
+      "destination": "src/content/posts/backend-notes/images/07-transactions/01.png",
+      "sha256": "ebeb76ca864cade1408f8c22b263e2ce6867006994b2b79a00fcacbe4e695a10",
+      "bytes": 150143
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261022194707530.png",
+      "destination": "src/content/posts/backend-notes/images/09-ai-errors-and-file-upload/01.png",
+      "sha256": "7ce1d6f7277779741d9b5560faee8df23eeb6338c6e0862bfc60a913b21e06e0",
+      "bytes": 177987
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261023140403917.png",
+      "destination": "src/content/posts/backend-notes/images/10-transactional-and-sessions/01.png",
+      "sha256": "c9b17f4b9b225dfc355a5359c414a34c248a401acde2c8b87d2ffee5aabff380",
+      "bytes": 59575
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261023185734062.png",
+      "destination": "src/content/posts/backend-notes/images/10-transactional-and-sessions/02.png",
+      "sha256": "2122383acb66b99f62bfa55f4fecc6f57a792f0665b84beb0fd8b90553c108f2",
+      "bytes": 99279
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261023203314357.png",
+      "destination": "src/content/posts/backend-notes/images/10-transactional-and-sessions/03.png",
+      "sha256": "531827a7b6ed73197b36a909afabb58278e4ef54c143279d6caee945447708ee",
+      "bytes": 98453
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261023210554080.png",
+      "destination": "src/content/posts/backend-notes/images/10-transactional-and-sessions/04.png",
+      "sha256": "2d537ac061fca3b444f3d7aa851208bbd6d6258cce9337f257d2d8827371cc53",
+      "bytes": 42678
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261029192913033.png",
+      "destination": "src/content/posts/backend-notes/images/13-nginx-and-backend-deployment/01.png",
+      "sha256": "49ca3f2e59c96d5a7ee50c305a209fb4329536a557a654218c2ad2525428445f",
+      "bytes": 13991
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261029215732464.png",
+      "destination": "src/content/posts/backend-notes/images/13-nginx-and-backend-deployment/02.png",
+      "sha256": "a1b72984715ae8c605a157007ae11c04b0a3c81def2d861b891806bba760ecc0",
+      "bytes": 19426
+    },
+    {
+      "source": "后端学习笔记.assets/image-20261029220232146.png",
+      "destination": "src/content/posts/backend-notes/images/13-nginx-and-backend-deployment/03.png",
+      "sha256": "7accd69967a641ae14f8b5f832a613f8590fd339c966c48aa60fc550748603a4",
+      "bytes": 31755
+    }
+  ],
+  "excluded": [
+    "未被正文引用的重复配图 d9d52db90cf8c526fa50a718241c88c2.png"
+  ],
+  "codeBlocksPreserved": 36,
+  "imageReferences": 17
+}

@@ -1,0 +1,1577 @@
+{
+  "source": "java笔记/java笔记.md",
+  "sourceSha256": "f9d1bcaf181cca01239412219eb1faa4fb0e9d399c511c6c030e2cc458b9a27f",
+  "importedOn": "2026-11-01",
+  "publishedDateMeaning": "博客迁入日期，原后端学习日期在文章正文及清单中保留",
+  "series": "Java 学习笔记",
+  "articles": [
+    {
+      "order": 1,
+      "sourceLines": [
+        7,
+        48
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## java原理"
+        },
+        {
+          "line": 3,
+          "text": "### 1.运行机制"
+        },
+        {
+          "line": 9,
+          "text": "### 2.内存"
+        },
+        {
+          "line": 25,
+          "text": "## 环境变量"
+        }
+      ],
+      "title": "Java 学习笔记 01：运行原理与环境变量",
+      "destination": "src/content/posts/java-notes/01-principles-and-environment.md",
+      "route": "/posts/java-notes/01-principles-and-environment/",
+      "images": [
+        "src/content/posts/java-notes/images/01-principles-and-environment/01.png",
+        "src/content/posts/java-notes/images/01-principles-and-environment/02.png",
+        "src/content/posts/java-notes/images/01-principles-and-environment/03.png"
+      ],
+      "codeBlocks": 1,
+      "sha256": "c5ff8c151705d37515ce503aaed6ea38db516152905fc36f60e9608851d629e8"
+    },
+    {
+      "order": 2,
+      "sourceLines": [
+        49,
+        300
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 一.基础语法"
+        },
+        {
+          "line": 3,
+          "text": "### 1.注释"
+        },
+        {
+          "line": 5,
+          "text": "#### 1.1注释分类"
+        },
+        {
+          "line": 14,
+          "text": "### 2.关键字"
+        },
+        {
+          "line": 16,
+          "text": "#### 2.1关键字的含义"
+        },
+        {
+          "line": 20,
+          "text": "#### 2.2关键字特点"
+        },
+        {
+          "line": 29,
+          "text": "### 3.字面量"
+        },
+        {
+          "line": 31,
+          "text": "#### 3.1字面量的分类"
+        },
+        {
+          "line": 54,
+          "text": "### 4.变量"
+        },
+        {
+          "line": 56,
+          "text": "#### 4.1变量的定义格式"
+        },
+        {
+          "line": 60,
+          "text": "#### 4.2变量的使用方式"
+        },
+        {
+          "line": 98,
+          "text": "### 5.计算机的存储规则"
+        },
+        {
+          "line": 102,
+          "text": "#### 5.1进制"
+        },
+        {
+          "line": 108,
+          "text": "##### 5.1.1常见的进制"
+        },
+        {
+          "line": 118,
+          "text": "##### 5.1.2 进制的转换"
+        },
+        {
+          "line": 146,
+          "text": "#### 5.2 ASCII码表"
+        },
+        {
+          "line": 150,
+          "text": "### 6.数据类型"
+        },
+        {
+          "line": 154,
+          "text": "#### 6.1数据类型的分类"
+        },
+        {
+          "line": 159,
+          "text": "##### 6.1.1基本数据类型"
+        },
+        {
+          "line": 175,
+          "text": "### 7.标识符"
+        },
+        {
+          "line": 179,
+          "text": "#### 7.1标识符命名规则"
+        },
+        {
+          "line": 199,
+          "text": "### 8.Scanner键盘录入"
+        }
+      ],
+      "title": "Java 学习笔记 02：基础语法",
+      "destination": "src/content/posts/java-notes/02-basic-syntax.md",
+      "route": "/posts/java-notes/02-basic-syntax/",
+      "images": [
+        "src/content/posts/java-notes/images/02-basic-syntax/01.png",
+        "src/content/posts/java-notes/images/02-basic-syntax/02.png",
+        "src/content/posts/java-notes/images/02-basic-syntax/03.png",
+        "src/content/posts/java-notes/images/02-basic-syntax/04.png",
+        "src/content/posts/java-notes/images/02-basic-syntax/05.png"
+      ],
+      "codeBlocks": 7,
+      "sha256": "059a7cc9d6e49e7ea171c83e6bbc7f35027fdcac1564bc785229e8190aff93cd"
+    },
+    {
+      "order": 3,
+      "sourceLines": [
+        301,
+        464
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 二.运算符"
+        },
+        {
+          "line": 3,
+          "text": "### 1.算数运算符"
+        },
+        {
+          "line": 26,
+          "text": "### 1.1 ”+” 操作的三种情况"
+        },
+        {
+          "line": 77,
+          "text": "### 2.自增自减运算符"
+        },
+        {
+          "line": 93,
+          "text": "### 3.赋值运算符"
+        },
+        {
+          "line": 101,
+          "text": "### 4.关系运算符"
+        },
+        {
+          "line": 107,
+          "text": "### 5.逻辑运算符"
+        },
+        {
+          "line": 117,
+          "text": "#### 6.三元运算符"
+        },
+        {
+          "line": 123,
+          "text": "#### 7.优先级(高到低)"
+        },
+        {
+          "line": 145,
+          "text": "## 三.取位数的公式"
+        },
+        {
+          "line": 161,
+          "text": "## 四.Java内存分配"
+        }
+      ],
+      "title": "Java 学习笔记 03：运算符、取位数与内存分配",
+      "destination": "src/content/posts/java-notes/03-operators-and-memory.md",
+      "route": "/posts/java-notes/03-operators-and-memory/",
+      "images": [
+        "src/content/posts/java-notes/images/03-operators-and-memory/01.png",
+        "src/content/posts/java-notes/images/03-operators-and-memory/02.png",
+        "src/content/posts/java-notes/images/03-operators-and-memory/03.png",
+        "src/content/posts/java-notes/images/03-operators-and-memory/04.png"
+      ],
+      "codeBlocks": 7,
+      "sha256": "e3d68dde00eae591f4d1729231216550a1fb5014a330fea981d245724e9cdcd7"
+    },
+    {
+      "order": 4,
+      "sourceLines": [
+        465,
+        622
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 五.判断和循环"
+        },
+        {
+          "line": 3,
+          "text": "### 1. 分支结构"
+        },
+        {
+          "line": 5,
+          "text": "#### 1.1 if语句"
+        },
+        {
+          "line": 40,
+          "text": "#### 1.2 switch语句"
+        },
+        {
+          "line": 64,
+          "text": "#### 1.3 if和switch的使用场景"
+        },
+        {
+          "line": 70,
+          "text": "### 2. 循环语句"
+        },
+        {
+          "line": 78,
+          "text": "#### 2.1 for循环"
+        },
+        {
+          "line": 86,
+          "text": "#### 2.2 while 循环"
+        },
+        {
+          "line": 96,
+          "text": "#### 2.3 无限循环"
+        },
+        {
+          "line": 118,
+          "text": "#### 2.4 continue和break的含义"
+        },
+        {
+          "line": 144,
+          "text": "#### 2.5 获取随机数"
+        }
+      ],
+      "title": "Java 学习笔记 04：判断与循环",
+      "destination": "src/content/posts/java-notes/04-control-flow.md",
+      "route": "/posts/java-notes/04-control-flow/",
+      "images": [],
+      "codeBlocks": 10,
+      "sha256": "91bcaf4ca53a768b7eabe619a93b62fbc043d2072ec6c90c11eb92f201952458"
+    },
+    {
+      "order": 5,
+      "sourceLines": [
+        623,
+        712
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 六.数组"
+        },
+        {
+          "line": 3,
+          "text": "### 1. 数组的含义"
+        },
+        {
+          "line": 10,
+          "text": "### 2.数组的定义与静动态初始化"
+        },
+        {
+          "line": 12,
+          "text": "#### 2.1数组的定义"
+        },
+        {
+          "line": 16,
+          "text": "#### 2.2数组初始化的两种方式"
+        },
+        {
+          "line": 28,
+          "text": "#### 2.3 数组元素访问"
+        },
+        {
+          "line": 43,
+          "text": "#### 2.4 数组遍历"
+        },
+        {
+          "line": 56,
+          "text": "#### 2.5 数组的动态初始化"
+        },
+        {
+          "line": 70,
+          "text": "#### 2.6 数字动态初始化和静态初始化的区别"
+        },
+        {
+          "line": 80,
+          "text": "### 3.数组常见问题"
+        }
+      ],
+      "title": "Java 学习笔记 05：数组基础",
+      "destination": "src/content/posts/java-notes/05-arrays.md",
+      "route": "/posts/java-notes/05-arrays/",
+      "images": [
+        "src/content/posts/java-notes/images/05-arrays/01.png",
+        "src/content/posts/java-notes/images/05-arrays/02.png",
+        "src/content/posts/java-notes/images/05-arrays/03.png"
+      ],
+      "codeBlocks": 2,
+      "sha256": "3ffaaebbcf86a336a3fddcc79d4392b13b53cb5dfcba24630f952adf696bf76e"
+    },
+    {
+      "order": 6,
+      "sourceLines": [
+        713,
+        750
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 七.方法"
+        },
+        {
+          "line": 5,
+          "text": "### 1.有返回值的方法定义格式"
+        },
+        {
+          "line": 26,
+          "text": "### 2.有返回值方法的调用格式"
+        },
+        {
+          "line": 30,
+          "text": "### 3.方法的重载"
+        },
+        {
+          "line": 35,
+          "text": "### 4.方法传递参数的结论"
+        }
+      ],
+      "title": "Java 学习笔记 06：方法",
+      "destination": "src/content/posts/java-notes/06-methods.md",
+      "route": "/posts/java-notes/06-methods/",
+      "images": [
+        "src/content/posts/java-notes/images/06-methods/01.png"
+      ],
+      "codeBlocks": 1,
+      "sha256": "34c53d0c1ad941fe5e2d2549700d5d7f639ade5a15e8b46b7beb65d9bfb1b0c2"
+    },
+    {
+      "order": 7,
+      "sourceLines": [
+        751,
+        1053
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 八.面向对象"
+        },
+        {
+          "line": 7,
+          "text": "### 1.类和对象"
+        },
+        {
+          "line": 16,
+          "text": "#### 1.1如何定义类"
+        },
+        {
+          "line": 44,
+          "text": "#### 1.2 如何得到类的对象"
+        },
+        {
+          "line": 51,
+          "text": "#### 1.3如何使用对象"
+        },
+        {
+          "line": 81,
+          "text": "### 2.定义类的补充注意事项"
+        },
+        {
+          "line": 95,
+          "text": "#### 2.1封装"
+        },
+        {
+          "line": 99,
+          "text": "#### 2.2private关键字"
+        },
+        {
+          "line": 114,
+          "text": "#### 2.3构造方法的格式"
+        },
+        {
+          "line": 146,
+          "text": "### 3.标准的javaBean类"
+        },
+        {
+          "line": 159,
+          "text": "### 4.两个对象的内存图"
+        },
+        {
+          "line": 167,
+          "text": "### 5.基本数据类型和引用数据类型"
+        },
+        {
+          "line": 179,
+          "text": "### 7.成员变量和局部变量"
+        },
+        {
+          "line": 185,
+          "text": "### 8.static关键字"
+        },
+        {
+          "line": 187,
+          "text": "#### 修饰成员变量"
+        },
+        {
+          "line": 193,
+          "text": "#### 修饰成员方法"
+        },
+        {
+          "line": 252,
+          "text": "### 9.final关键字"
+        },
+        {
+          "line": 268,
+          "text": "### 10.枚举"
+        }
+      ],
+      "title": "Java 学习笔记 07：面向对象基础",
+      "destination": "src/content/posts/java-notes/07-object-oriented-basics.md",
+      "route": "/posts/java-notes/07-object-oriented-basics/",
+      "images": [
+        "src/content/posts/java-notes/images/07-object-oriented-basics/01.png",
+        "src/content/posts/java-notes/images/07-object-oriented-basics/02.png",
+        "src/content/posts/java-notes/images/07-object-oriented-basics/03.png",
+        "src/content/posts/java-notes/images/07-object-oriented-basics/04.png",
+        "src/content/posts/java-notes/images/07-object-oriented-basics/05.png",
+        "src/content/posts/java-notes/images/07-object-oriented-basics/06.png",
+        "src/content/posts/java-notes/images/07-object-oriented-basics/07.png"
+      ],
+      "codeBlocks": 8,
+      "sha256": "057d00be86c232382cacf2e2dff8157ae35fe653ed26b50db9815a0fa52e79e1"
+    },
+    {
+      "order": 8,
+      "sourceLines": [
+        1054,
+        1325
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 九.字符串"
+        },
+        {
+          "line": 3,
+          "text": "### 1.String"
+        },
+        {
+          "line": 5,
+          "text": "#### String的注意点"
+        },
+        {
+          "line": 25,
+          "text": "#### 1.1创建String对象的两种方式"
+        },
+        {
+          "line": 36,
+          "text": "#### 1.2字符串比较：`==` 和 `equals()`"
+        },
+        {
+          "line": 72,
+          "text": "#### String常用方法"
+        },
+        {
+          "line": 178,
+          "text": "#### String 的切割 `split()`"
+        },
+        {
+          "line": 206,
+          "text": "### 2.StringBuilider"
+        },
+        {
+          "line": 233,
+          "text": "### 3.StringJoiner"
+        },
+        {
+          "line": 238,
+          "text": "#### **StringJoiner构造方法**"
+        },
+        {
+          "line": 245,
+          "text": "#### **StringJoiner成员方法**"
+        },
+        {
+          "line": 253,
+          "text": "### 字符串原理"
+        }
+      ],
+      "title": "Java 学习笔记 08：字符串",
+      "destination": "src/content/posts/java-notes/08-strings.md",
+      "route": "/posts/java-notes/08-strings/",
+      "images": [
+        "src/content/posts/java-notes/images/08-strings/01.png"
+      ],
+      "codeBlocks": 25,
+      "sha256": "fd1dc9f900148db20931c840ec35a6ec24a1b63e447ac8ba65082777070b4fcc"
+    },
+    {
+      "order": 9,
+      "sourceLines": [
+        1326,
+        2086
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 十.集合"
+        },
+        {
+          "line": 5,
+          "text": "### 集合进阶"
+        },
+        {
+          "line": 30,
+          "text": "### Collection"
+        },
+        {
+          "line": 60,
+          "text": "#### 作用"
+        },
+        {
+          "line": 73,
+          "text": "#### **常见方法**"
+        },
+        {
+          "line": 105,
+          "text": "#### **contains()与equals()的关系**"
+        },
+        {
+          "line": 128,
+          "text": "#### 遍历方式"
+        },
+        {
+          "line": 138,
+          "text": "#####  Iterator 迭代器（不依赖索引）"
+        },
+        {
+          "line": 167,
+          "text": "##### 增强for"
+        },
+        {
+          "line": 183,
+          "text": "##### forEach + Lambda"
+        },
+        {
+          "line": 271,
+          "text": "### List"
+        },
+        {
+          "line": 273,
+          "text": "#### ArrayList"
+        },
+        {
+          "line": 275,
+          "text": "##### 底层逻辑"
+        },
+        {
+          "line": 346,
+          "text": "##### 为什么查询快"
+        },
+        {
+          "line": 391,
+          "text": "##### 四个核心操作"
+        },
+        {
+          "line": 393,
+          "text": "###### 1. 查"
+        },
+        {
+          "line": 421,
+          "text": "###### 2. 改"
+        },
+        {
+          "line": 477,
+          "text": "###### 3.增"
+        },
+        {
+          "line": 558,
+          "text": "###### 4.删"
+        },
+        {
+          "line": 687,
+          "text": "##### 扩容机制"
+        },
+        {
+          "line": 713,
+          "text": "### Map"
+        },
+        {
+          "line": 715,
+          "text": "#### HashMap"
+        },
+        {
+          "line": 726,
+          "text": "#### 常用方法"
+        },
+        {
+          "line": 742,
+          "text": "#### 底层实现原理"
+        }
+      ],
+      "title": "Java 学习笔记 09：集合",
+      "destination": "src/content/posts/java-notes/09-collections.md",
+      "route": "/posts/java-notes/09-collections/",
+      "images": [
+        "src/content/posts/java-notes/images/09-collections/01.png",
+        "src/content/posts/java-notes/images/09-collections/02.png",
+        "src/content/posts/java-notes/images/09-collections/03.png"
+      ],
+      "codeBlocks": 75,
+      "sha256": "29a9797ca6deed3003ac140c81959a4ffd1416c4eebf33cae0254c534d976c80"
+    },
+    {
+      "order": 10,
+      "sourceLines": [
+        2087,
+        2479
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 面向对象高级"
+        },
+        {
+          "line": 3,
+          "text": "### 1.继承"
+        },
+        {
+          "line": 34,
+          "text": "#### 1.1继承中的成员变量"
+        },
+        {
+          "line": 40,
+          "text": "#### 1.2成员方法"
+        },
+        {
+          "line": 46,
+          "text": "##### 1.2.1方法的重写"
+        },
+        {
+          "line": 58,
+          "text": "#### 1.3构造方法"
+        },
+        {
+          "line": 66,
+          "text": "#### 1.4 this和super关键字"
+        },
+        {
+          "line": 72,
+          "text": "#### 1. 5总结"
+        },
+        {
+          "line": 76,
+          "text": "##### 1.5.1"
+        },
+        {
+          "line": 84,
+          "text": "#### 1.6 java中的权限修饰符"
+        },
+        {
+          "line": 88,
+          "text": "### 2.多态"
+        },
+        {
+          "line": 128,
+          "text": "#### 2.1 多态的前提"
+        },
+        {
+          "line": 142,
+          "text": "#### 2.2 多态特点"
+        },
+        {
+          "line": 148,
+          "text": "#### 2.3 多态的优缺点"
+        },
+        {
+          "line": 154,
+          "text": "#### 2.4 引用数据类型的类型转换的几种方式"
+        },
+        {
+          "line": 183,
+          "text": "### 3.抽象方法"
+        },
+        {
+          "line": 201,
+          "text": "### 4.接口"
+        },
+        {
+          "line": 205,
+          "text": "#### **4.1接口的定义和使用**"
+        },
+        {
+          "line": 229,
+          "text": "#### 4.2 接口中的成员特点"
+        },
+        {
+          "line": 233,
+          "text": "#### 4.3 接口和类之间的关系"
+        },
+        {
+          "line": 237,
+          "text": "### 5.内部类"
+        },
+        {
+          "line": 249,
+          "text": "#### 5.1内部类的应用"
+        },
+        {
+          "line": 253,
+          "text": "#### 5.2内部类的分类"
+        },
+        {
+          "line": 255,
+          "text": "##### 1.成员内部类"
+        },
+        {
+          "line": 291,
+          "text": "##### 2.静态内部类"
+        },
+        {
+          "line": 297,
+          "text": "##### 2.局部内部类"
+        },
+        {
+          "line": 320,
+          "text": "##### 匿名内部类"
+        },
+        {
+          "line": 368,
+          "text": "### 杂七杂八"
+        },
+        {
+          "line": 370,
+          "text": "#### 1. 包"
+        },
+        {
+          "line": 382,
+          "text": "#### 2. 常量"
+        }
+      ],
+      "title": "Java 学习笔记 10：面向对象进阶",
+      "destination": "src/content/posts/java-notes/10-advanced-object-oriented.md",
+      "route": "/posts/java-notes/10-advanced-object-oriented/",
+      "images": [
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/01.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/02.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/03.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/04.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/05.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/06.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/07.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/08.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/09.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/10.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/11.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/12.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/13.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/14.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/15.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/16.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/17.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/18.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/19.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/20.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/21.png",
+        "src/content/posts/java-notes/images/10-advanced-object-oriented/22.png"
+      ],
+      "codeBlocks": 11,
+      "sha256": "2b312a46732551eff4e7e60df3b2d87c6bc89e6c0a3b070185c18fd723f2ef04"
+    },
+    {
+      "order": 11,
+      "sourceLines": [
+        2480,
+        2610
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## API"
+        },
+        {
+          "line": 3,
+          "text": "### Runtime"
+        },
+        {
+          "line": 7,
+          "text": "#### 获取 Runtime 对象"
+        },
+        {
+          "line": 54,
+          "text": "#### Runtime 中的方法调用"
+        },
+        {
+          "line": 91,
+          "text": "#### exec() 方法"
+        }
+      ],
+      "title": "Java 学习笔记 11：Runtime API",
+      "destination": "src/content/posts/java-notes/11-runtime-api.md",
+      "route": "/posts/java-notes/11-runtime-api/",
+      "images": [],
+      "codeBlocks": 14,
+      "sha256": "d9d6c84352c17cb6c622eb5070da875b4908362149ca98b557ba56d1d2612684"
+    },
+    {
+      "order": 12,
+      "sourceLines": [
+        2611,
+        2978
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "### Object"
+        },
+        {
+          "line": 14,
+          "text": "#### toString()"
+        },
+        {
+          "line": 59,
+          "text": "#### equals()"
+        },
+        {
+          "line": 67,
+          "text": "#### == 与 equals() 的区别"
+        },
+        {
+          "line": 139,
+          "text": "#### Object 默认的 equals()"
+        },
+        {
+          "line": 163,
+          "text": "#### 重写 equals()"
+        }
+      ],
+      "title": "Java 学习笔记 12：Object 与 equals",
+      "destination": "src/content/posts/java-notes/12-object-api.md",
+      "route": "/posts/java-notes/12-object-api/",
+      "images": [],
+      "codeBlocks": 41,
+      "sha256": "58a28e05c0c9e349769a776fe9793e5bad28ea88636faa7d1236cc21bda2a6f1"
+    },
+    {
+      "order": 13,
+      "sourceLines": [
+        2979,
+        3118
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "### StringJoiner"
+        },
+        {
+          "line": 11,
+          "text": "#### 基本使用"
+        },
+        {
+          "line": 47,
+          "text": "#### 带前缀和后缀"
+        },
+        {
+          "line": 81,
+          "text": "#### add() 需要 String"
+        },
+        {
+          "line": 109,
+          "text": "#### StringJoiner 与之前手写字符串拼接的区别"
+        }
+      ],
+      "title": "Java 学习笔记 13：StringJoiner API",
+      "destination": "src/content/posts/java-notes/13-string-joiner-api.md",
+      "route": "/posts/java-notes/13-string-joiner-api/",
+      "images": [],
+      "codeBlocks": 17,
+      "sha256": "0927030d28e5ae3277b4e4486e69b7a9e4389984434107def3b5bc826001ac60"
+    },
+    {
+      "order": 14,
+      "sourceLines": [
+        3119,
+        3560
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "### Object.clone()"
+        },
+        {
+          "line": 17,
+          "text": "#### Cloneable 接口"
+        },
+        {
+          "line": 32,
+          "text": "#### 重写 clone()"
+        },
+        {
+          "line": 75,
+          "text": "#### 对象赋值与克隆的区别"
+        },
+        {
+          "line": 77,
+          "text": "#### 普通赋值"
+        },
+        {
+          "line": 110,
+          "text": "#### clone()"
+        },
+        {
+          "line": 140,
+          "text": "#### 浅克隆"
+        },
+        {
+          "line": 200,
+          "text": "#### 深克隆"
+        },
+        {
+          "line": 226,
+          "text": "#### 对数组进行深克隆"
+        },
+        {
+          "line": 294,
+          "text": "#### 为什么 String 通常不用继续 clone？"
+        },
+        {
+          "line": 326,
+          "text": "#### clone() 完整示例"
+        },
+        {
+          "line": 363,
+          "text": "#### 今日 API 易错点"
+        },
+        {
+          "line": 365,
+          "text": "#### 2. 对象赋值不等于克隆"
+        },
+        {
+          "line": 391,
+          "text": "#### 3. 浅克隆不是“没有创建新对象”"
+        },
+        {
+          "line": 402,
+          "text": "#### 4. 深克隆不是简单地把所有引用类型都复制"
+        },
+        {
+          "line": 415,
+          "text": "#### 5. 方法返回值不能忽略"
+        }
+      ],
+      "title": "Java 学习笔记 14：对象克隆",
+      "destination": "src/content/posts/java-notes/14-object-cloning.md",
+      "route": "/posts/java-notes/14-object-cloning/",
+      "images": [],
+      "codeBlocks": 47,
+      "sha256": "bde1c874a38bc8709d7ede520921209c27dd26a1507a3cb0e87915121a15ce1f"
+    },
+    {
+      "order": 15,
+      "sourceLines": [
+        3561,
+        3807
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "### Objects"
+        },
+        {
+          "line": 31,
+          "text": "#### Objects.equals()"
+        },
+        {
+          "line": 79,
+          "text": "#### Objects.isNull()"
+        },
+        {
+          "line": 113,
+          "text": "#### Objects.nonNull()"
+        },
+        {
+          "line": 141,
+          "text": "#### Objects.requireNonNull()"
+        },
+        {
+          "line": 189,
+          "text": "#### Object.equals() 与 Objects.equals()"
+        },
+        {
+          "line": 227,
+          "text": "#### Objects 核心理解"
+        }
+      ],
+      "title": "Java 学习笔记 15：Objects 工具类",
+      "destination": "src/content/posts/java-notes/15-objects-api.md",
+      "route": "/posts/java-notes/15-objects-api/",
+      "images": [],
+      "codeBlocks": 29,
+      "sha256": "0781a8dbe4f16a9008970c856818db92632d8e4cf77e76d8a4ae5022daf1c652"
+    },
+    {
+      "order": 16,
+      "sourceLines": [
+        3808,
+        3990
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "### BigInteger"
+        },
+        {
+          "line": 11,
+          "text": "#### 创建 BigInteger"
+        },
+        {
+          "line": 21,
+          "text": "#### BigInteger 的运算"
+        },
+        {
+          "line": 59,
+          "text": "#### BigInteger 的比较"
+        },
+        {
+          "line": 142,
+          "text": "#### BigInteger 是不可变对象"
+        },
+        {
+          "line": 169,
+          "text": "#### 核心理解"
+        }
+      ],
+      "title": "Java 学习笔记 16：BigInteger",
+      "destination": "src/content/posts/java-notes/16-big-integer.md",
+      "route": "/posts/java-notes/16-big-integer/",
+      "images": [],
+      "codeBlocks": 21,
+      "sha256": "cc3c3a5392d3bb09266fcd13b0799129daf4357a542129b9c8868c279a743c5d"
+    },
+    {
+      "order": 17,
+      "sourceLines": [
+        3991,
+        4311
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "### BigDecimal"
+        },
+        {
+          "line": 31,
+          "text": "#### 创建 BigDecimal"
+        },
+        {
+          "line": 68,
+          "text": "#### BigDecimal 的基本运算"
+        },
+        {
+          "line": 118,
+          "text": "#### BigDecimal 是不可变对象"
+        },
+        {
+          "line": 145,
+          "text": "#### BigDecimal 的除法"
+        },
+        {
+          "line": 211,
+          "text": "#### BigDecimal 的比较"
+        },
+        {
+          "line": 287,
+          "text": "#### BigInteger 与 BigDecimal"
+        }
+      ],
+      "title": "Java 学习笔记 17：BigDecimal",
+      "destination": "src/content/posts/java-notes/17-big-decimal.md",
+      "route": "/posts/java-notes/17-big-decimal/",
+      "images": [],
+      "codeBlocks": 40,
+      "sha256": "15a25d07bc74f0bd1d1f09b913eef807d00e056c39bc86e3327d51d4accc5b1d"
+    },
+    {
+      "order": 18,
+      "sourceLines": [
+        4312,
+        4467
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## 包装类"
+        },
+        {
+          "line": 18,
+          "text": "#### 装箱"
+        },
+        {
+          "line": 47,
+          "text": "#### 拆箱"
+        },
+        {
+          "line": 82,
+          "text": "#### 包装类最常用：字符串转换"
+        }
+      ],
+      "title": "Java 学习笔记 18：包装类",
+      "destination": "src/content/posts/java-notes/18-wrapper-classes.md",
+      "route": "/posts/java-notes/18-wrapper-classes/",
+      "images": [],
+      "codeBlocks": 14,
+      "sha256": "c01b3008c688e4c141988f24bfc1d9683a97b9afd60286ee3f99f2f4d3d04a45"
+    },
+    {
+      "order": 19,
+      "sourceLines": [
+        4468,
+        4566
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "### Arrays"
+        },
+        {
+          "line": 33,
+          "text": "#### 排序"
+        },
+        {
+          "line": 46,
+          "text": "#### 比较数组"
+        },
+        {
+          "line": 55,
+          "text": "#### 填充"
+        },
+        {
+          "line": 67,
+          "text": "#### 复制数组"
+        },
+        {
+          "line": 82,
+          "text": "#### 转List"
+        },
+        {
+          "line": 92,
+          "text": "#### 多维度数组打印"
+        }
+      ],
+      "title": "Java 学习笔记 19：Arrays 工具类",
+      "destination": "src/content/posts/java-notes/19-arrays-api.md",
+      "route": "/posts/java-notes/19-arrays-api/",
+      "images": [],
+      "codeBlocks": 7,
+      "sha256": "da0b0d837ae20e3954678f79406eb9e24c89147fb5074f61be5deae1a989c1bd"
+    },
+    {
+      "order": 20,
+      "sourceLines": [
+        4567,
+        4655
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## lambda表达式"
+        },
+        {
+          "line": 5,
+          "text": "####  Lambda的作用"
+        },
+        {
+          "line": 25,
+          "text": "#### Lambda的语法"
+        },
+        {
+          "line": 45,
+          "text": "#### 函数式接口（重点！）"
+        }
+      ],
+      "title": "Java 学习笔记 20：Lambda 表达式",
+      "destination": "src/content/posts/java-notes/20-lambda.md",
+      "route": "/posts/java-notes/20-lambda/",
+      "images": [],
+      "codeBlocks": 5,
+      "sha256": "a29e43a15899183e2d794d587b5af0da91de035de53d41a72131fb0915830cf4"
+    },
+    {
+      "order": 21,
+      "sourceLines": [
+        4656,
+        4770
+      ],
+      "sourceHeadings": [
+        {
+          "line": 1,
+          "text": "## Java 异常处理（Exception）"
+        },
+        {
+          "line": 3,
+          "text": "### 1. 异常的概念"
+        },
+        {
+          "line": 7,
+          "text": "#### 异常体系"
+        },
+        {
+          "line": 26,
+          "text": "### 2. 异常处理关键字"
+        },
+        {
+          "line": 36,
+          "text": "### 3. 经典代码示例"
+        },
+        {
+          "line": 38,
+          "text": "#### try / catch / finally"
+        },
+        {
+          "line": 53,
+          "text": "#### throw 与 throws"
+        },
+        {
+          "line": 66,
+          "text": "### 4. 异常传播机制"
+        },
+        {
+          "line": 82,
+          "text": "### 5. 实际开发中的异常处理"
+        }
+      ],
+      "title": "Java 学习笔记 21：异常处理",
+      "destination": "src/content/posts/java-notes/21-exceptions.md",
+      "route": "/posts/java-notes/21-exceptions/",
+      "images": [],
+      "codeBlocks": 5,
+      "sha256": "c87f312adedade577d3d2bd702bbc82d8acfb677b2e95b0170716866e1d628d0"
+    }
+  ],
+  "images": [
+    {
+      "source": "java笔记/java笔记.assets/image-20260529110508674.png",
+      "destination": "src/content/posts/java-notes/images/01-principles-and-environment/01.png",
+      "sha256": "ffb401edf1aa8c5580a8edf2d49751da92993dda1e42ba6560c93273cd158b04",
+      "bytes": 7113
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260529110608415.png",
+      "destination": "src/content/posts/java-notes/images/01-principles-and-environment/02.png",
+      "sha256": "c659551c4a8281649947d85f4c9692a4f9d5547c6b090cd2958aac1c408d732e",
+      "bytes": 10842
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260529110716381.png",
+      "destination": "src/content/posts/java-notes/images/01-principles-and-environment/03.png",
+      "sha256": "19d0ff26bb0f32f25dea9f6511033dc9750eb96ce90c73f82a4c4af70436179d",
+      "bytes": 2376
+    },
+    {
+      "source": "java笔记/java基础概念.assets/image-20250308152247682.png",
+      "destination": "src/content/posts/java-notes/images/02-basic-syntax/01.png",
+      "sha256": "ca164518dc3a67b78e056e44bdc0200ae25d6e84b1052dbcd1380962d97a62fe",
+      "bytes": 83218
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-08 161112.png",
+      "destination": "src/content/posts/java-notes/images/02-basic-syntax/02.png",
+      "sha256": "8afe5e0ad8766a880d997b81263f35df70a794aa3eea3e0fcd801a4a58338ddc",
+      "bytes": 179310
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-08 203956.png",
+      "destination": "src/content/posts/java-notes/images/02-basic-syntax/03.png",
+      "sha256": "99299c87846d2988c242274db1d5c93b2cd92132d2dc95564df68dc3d0664a2a",
+      "bytes": 21048
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-08 204613.png",
+      "destination": "src/content/posts/java-notes/images/02-basic-syntax/04.png",
+      "sha256": "3f611e9b7bf44d4a6695b68ef9e24992880a4c789219c3db257dbabfe3d0e8d2",
+      "bytes": 611041
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-08 210523.png",
+      "destination": "src/content/posts/java-notes/images/02-basic-syntax/05.png",
+      "sha256": "52e041cdc852173653fefe14b97f9c01b2471748e20238cb7d656d4fb6df8861",
+      "bytes": 231720
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-11 223740.png",
+      "destination": "src/content/posts/java-notes/images/03-operators-and-memory/01.png",
+      "sha256": "a3cddf6927758b15b02909109956803454b7c4bc5d83ff63b01add29ed93af78",
+      "bytes": 107303
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-11 224256.png",
+      "destination": "src/content/posts/java-notes/images/03-operators-and-memory/02.png",
+      "sha256": "071b9f0dbb8101af2827bde76e91d1151960acc15481c1fd239ea7a7c3a06e21",
+      "bytes": 204426
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-11 225426.png",
+      "destination": "src/content/posts/java-notes/images/03-operators-and-memory/03.png",
+      "sha256": "554566037a3069be5f21751d47b0c8e9f690943e1b69ce14746f0a081dfcfeee",
+      "bytes": 122000
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-20 201739.png",
+      "destination": "src/content/posts/java-notes/images/03-operators-and-memory/04.png",
+      "sha256": "ad0f8e0719a1d87becf0dcc5b27332c708f9513e1d17d5193eec0861e0e07410",
+      "bytes": 56771
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-18 190902.png",
+      "destination": "src/content/posts/java-notes/images/05-arrays/01.png",
+      "sha256": "98c99abfbf9331107bd1b45d4dc690098635d8e0f5be78f905c192b2f56c74ef",
+      "bytes": 50518
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-18 191119.png",
+      "destination": "src/content/posts/java-notes/images/05-arrays/02.png",
+      "sha256": "ce3ed15ab58f2ff79ae542f68ebe1dbeeb25b680017d51fe3059a80e433721cf",
+      "bytes": 77411
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-19 212739.png",
+      "destination": "src/content/posts/java-notes/images/05-arrays/03.png",
+      "sha256": "2a1a408474e683fecb78273ed7cdfac065ce14106c639fd6aa25510b73692d61",
+      "bytes": 14989
+    },
+    {
+      "source": "java笔记/java基础概念.assets/屏幕截图 2025-03-28 104037.png",
+      "destination": "src/content/posts/java-notes/images/06-methods/01.png",
+      "sha256": "f6a62e15bc7b4bc07ba725f35292cf2babb8f40c1386194d4571ad9800706bea",
+      "bytes": 167722
+    },
+    {
+      "source": "java笔记/java笔记.assets/屏幕截图 2025-04-11 101416.png",
+      "destination": "src/content/posts/java-notes/images/07-object-oriented-basics/01.png",
+      "sha256": "972cf0b6a9f5001b370beb98a2db2348ac2db247a71f16b756592b0e3af05c77",
+      "bytes": 427259
+    },
+    {
+      "source": "java笔记/java笔记.assets/屏幕截图 2025-04-11 102150.png",
+      "destination": "src/content/posts/java-notes/images/07-object-oriented-basics/02.png",
+      "sha256": "c5500cfca245d8a819cd8a5d4e715b001c1a0b9ae9806632dfd04b1bcee82906",
+      "bytes": 278331
+    },
+    {
+      "source": "java笔记/java笔记.assets/屏幕截图 2025-04-11 090327.png",
+      "destination": "src/content/posts/java-notes/images/07-object-oriented-basics/03.png",
+      "sha256": "e24382756b4d03d6746e137af32472ff4d4efef88738962419569efa92b5314e",
+      "bytes": 284264
+    },
+    {
+      "source": "java笔记/java笔记.assets/屏幕截图 2025-04-11 092507.png",
+      "destination": "src/content/posts/java-notes/images/07-object-oriented-basics/04.png",
+      "sha256": "346689cefa65a6afcb6d093bac02e199161f0bedf8986fba20c19c8eeeebc05d",
+      "bytes": 99808
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260618164055583.png",
+      "destination": "src/content/posts/java-notes/images/07-object-oriented-basics/05.png",
+      "sha256": "8d56fd7a75a358f3c2863977269ba7e722a56975d3ea0c0f77fa94feab239494",
+      "bytes": 54476
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260621213459557.png",
+      "destination": "src/content/posts/java-notes/images/07-object-oriented-basics/06.png",
+      "sha256": "2840e0cf6c73cdbd1ec76e650166a00aa7715b0996252f32e71140858f98094c",
+      "bytes": 159231
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260621213653694.png",
+      "destination": "src/content/posts/java-notes/images/07-object-oriented-basics/07.png",
+      "sha256": "bcff8feb22da4ea49cfefe2f15e307754cde78c2d4076dc3110e82892f9dc8a0",
+      "bytes": 160849
+    },
+    {
+      "source": "java笔记/java笔记.assets/屏幕截图 2025-04-18 111445.png",
+      "destination": "src/content/posts/java-notes/images/08-strings/01.png",
+      "sha256": "bab05a4bddbf630c59d700304cfd4bcf163205f16931b28882a204b3c5033c49",
+      "bytes": 146241
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260924160910767.png",
+      "destination": "src/content/posts/java-notes/images/09-collections/01.png",
+      "sha256": "da64edecca954322d1b8dd262eea32fceecc29251f19323d336adb80de7c71ba",
+      "bytes": 146078
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260924164552872.png",
+      "destination": "src/content/posts/java-notes/images/09-collections/02.png",
+      "sha256": "189df2e84142e3768ad1d1f43883eae2934d976443e58698e6add99296a62659",
+      "bytes": 62348
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260924164619166.png",
+      "destination": "src/content/posts/java-notes/images/09-collections/03.png",
+      "sha256": "aef0876ed8e4f5c2f4b17194e13b9339c5d933976adff53a49e3d886a2804396",
+      "bytes": 69112
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260624101017120.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/01.png",
+      "sha256": "8b7b5f3fccecf4868b4a84a67bf30035898ddd998f6c2ae308507cebc52b55b6",
+      "bytes": 58996
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260625103457193.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/02.png",
+      "sha256": "51b1cb9ebc90aead795dd74ea7f5185ebeb0868223310eb9b891db13c7825317",
+      "bytes": 61360
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260625103552617.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/03.png",
+      "sha256": "8c3ca44643177a5e6f6e5c0a3f510c51bb819c113c9dd5ff382cb07868b71622",
+      "bytes": 50813
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260625105432749.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/04.png",
+      "sha256": "0cb90d24fd3f0810f22813d4fa4ab1f8bcd402d81941394aaba3efd5a9068d75",
+      "bytes": 135174
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260702094734162.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/05.png",
+      "sha256": "b910241568dbccecf6c14799cd38bfec1b704c530c56bb396ead1742635b5091",
+      "bytes": 93507
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260706092941776.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/06.png",
+      "sha256": "ff6e21c284d1002c896138cf82bf0fb0e54655295906cf1a4d134f0e2d2e6393",
+      "bytes": 146658
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260706093219202.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/07.png",
+      "sha256": "52ae2ca257ff3337044c5994b9879afc03766037d16d09ddfdc072760b9e8194",
+      "bytes": 236535
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260706094028506.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/08.png",
+      "sha256": "f52cb11e17d4c7f0aa3f944b4ee9a5c2b17dad2d2421bfe66fea1995920cee2f",
+      "bytes": 94452
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260806105338831.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/09.png",
+      "sha256": "380dac5181ce852f3a2a87d6e468bf04aed3d441333e08be860cd4a994123173",
+      "bytes": 70780
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260806182900622.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/10.png",
+      "sha256": "5a3a5f727634b93e52be6ff8ab6affd95b3a25346627257e104dc0aad7bb36c1",
+      "bytes": 40560
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260806190611970.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/11.png",
+      "sha256": "e226f78765b068730bf8378f333f8c89a88538e1156b14a8b42cdf8919ab3f71",
+      "bytes": 108108
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260820150221667.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/12.png",
+      "sha256": "8d8d8f303e74b044c27d7d159328bad011349079a549fd8d7416d43350fdd1b9",
+      "bytes": 9300
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260823102036219.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/13.png",
+      "sha256": "49043f17039b9c078d9d55957bcdbddd711291a97bf4beaa9567271f07d2cd80",
+      "bytes": 113575
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260823145949127.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/14.png",
+      "sha256": "93c334dbdd30b197251e15d294c713410d9b116515e4ff4d56defae3bc4a5a03",
+      "bytes": 73075
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260823153503503.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/15.png",
+      "sha256": "a8809a08b52365e0f213738e322c73aa2411d222ba118c9266f516864f1c646a",
+      "bytes": 92322
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260823155418852.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/16.png",
+      "sha256": "ba5cc823284279b6e9ee9432f34abb5692de2cf21377c0455187526a692ee738",
+      "bytes": 74959
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260824104433186.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/17.png",
+      "sha256": "3e30fc32e0aa9a5fdb0f93a6a4320507f9bb57b55c8990e1a948791733616f35",
+      "bytes": 91830
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260824104748014.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/18.png",
+      "sha256": "ebc6af768dd4474b0c3173725b8344d02d3762a3818e3226154a2f3be0a429ff",
+      "bytes": 113686
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260825191926664.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/19.png",
+      "sha256": "6b3220e08f2a46babef90d64d68db4f4821a6ae957310a8f6325eacc1440186d",
+      "bytes": 259532
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260825193357145.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/20.png",
+      "sha256": "fb824c62910a1d47a4d02db1c96ad18c0f54b1958c44d025f499e7fa38de9bcb",
+      "bytes": 148295
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260826114341687.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/21.png",
+      "sha256": "a1a5aafa63d80d1d19f0af6a87faba20f5a27966445cc1f35cf748dc18ab0df6",
+      "bytes": 67299
+    },
+    {
+      "source": "java笔记/java笔记.assets/image-20260822161008553.png",
+      "destination": "src/content/posts/java-notes/images/10-advanced-object-oriented/22.png",
+      "sha256": "f3d4b4c4c4bd8d255d22f25069ca5d08068539ee63b20782613c509840f18d54",
+      "bytes": 60393
+    }
+  ],
+  "excluded": [
+    "总标题 java篇 与 Typora [TOC] 占位符",
+    "API_17 下的 CHM/CHW 离线文档",
+    "未被正文引用的图片"
+  ],
+  "codeBlocksPreserved": 387,
+  "imageReferences": 49
+}
