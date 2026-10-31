@@ -1,12 +1,12 @@
 {
-	"enabled": true,
-	"volume": 0.7,
-	"playlist": [
-		{
-			"name": "使一颗心免于哀伤-哼唱",
-			"artist": "",
-			"url": "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-			"cover": "/assets/music/cover/109951169585655912.webp"
-		}
-	]
+  "enabled": true,
+  "volume": 0.7,
+  "playlist": [
+    {
+      "name": "被偷走的玩具",
+      "artist": "阿扑",
+      "url": "/assets/music/阿扑 - 被偷走的玩具.mp3",
+      "cover": "/assets/music/cover/b44e7f13e3ef070359e661041f5b4b1a.jpg"
+    }
+  ]
 }
