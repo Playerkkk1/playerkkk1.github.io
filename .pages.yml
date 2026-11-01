@@ -56,9 +56,9 @@ content:
       field: create
     view:
       primary: title
-      fields: [title, published, category, draft, pinned]
-      sort: [published, title]
-      search: [title, description, category]
+      fields: [title, published, category, series, seriesOrder, draft, pinned]
+      sort: [published, seriesOrder, title]
+      search: [title, description, category, series]
       default:
         sort: published
         order: desc
@@ -88,6 +88,18 @@ content:
         list: true
         # No array default: Pages CMS reuses it as the value for Add an item.
         description: 点击 Add an item 添加输入框，每项填写一个标签；不需要的项请移除。
+      - name: series
+        label: 系列名称
+        type: string
+        default: ""
+        description: 可选。同一系列填写完全相同的名称，例如“六级学习笔记”；留空表示独立文章。
+      - name: seriesOrder
+        label: 系列顺序
+        type: number
+        options:
+          min: 0
+          step: 1
+        description: 可选。按 1、2、3 填写阅读顺序；数字越小越靠前。留空则排在已填写顺序的文章之后，系列名称为空时不参与系列导航。
       - name: draft
         label: 草稿
         type: boolean
@@ -342,5 +354,5 @@ content:
 
 settings:
   content:
-    # Keep series, seriesOrder, author, lang and other unmanaged frontmatter.
+    # Keep author, lang and other unmanaged frontmatter.
     merge: true
