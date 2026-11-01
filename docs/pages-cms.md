@@ -10,6 +10,8 @@
 
 友链由后台「友链管理」维护；文章详情页已接入公共浏览量统计。配置依据、操作步骤和计数范围见 [友链与文章浏览量](./friends-and-page-views.md)。
 
+留言板与文章评论采用 Giscus，由 GitHub Discussions 保存，开通与管理步骤见 [留言板与文章评论](./guestbook-and-comments.md)。
+
 ## 先收藏这几个入口
 
 | 用途 | 地址或位置 |

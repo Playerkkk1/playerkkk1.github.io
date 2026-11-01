@@ -1,69 +1,45 @@
 ---
-import { commentConfig } from "@/config";
+import { commentConfig } from "@/config/commentConfig";
+import { resolveGiscusPath } from "@/utils/giscus-runtime";
 
-if (!commentConfig?.giscus) {
-	throw new Error("Giscus comments are not configured");
+interface Props {
+	path: string;
 }
 
 const giscus = commentConfig.giscus;
-const lightTheme = "light";
-const darkTheme = "dark";
+const configured = Boolean(giscus?.repoId && giscus?.categoryId);
+const path = resolveGiscusPath(Astro.props.path, Astro.url.toString());
+const discussionsUrl = `https://github.com/${giscus?.repo}/discussions`;
 ---
 
-<!-- 
-  Giscus 官方Web Component用法，兼容Astro静态输出，无需import包，无需NPM依赖！
-  参考：https://giscus.app/ 详情配置说明
--->
-<giscus-widget
-  id="comments"
-  repo={giscus.repo}
-  repoId={giscus.repoId}
-  category={giscus.category}
-  categoryId={giscus.categoryId}
-  mapping={giscus.mapping}
-  strict={giscus.strict}
-  reactionsEnabled={giscus.reactionsEnabled}
-  emitMetadata={giscus.emitMetadata}
-  inputPosition={giscus.inputPosition}
-  theme={lightTheme}
-  lang={giscus.lang}
-  loading={giscus.loading}
-/>
-
-<script is:inline define:vars={{ lightTheme, darkTheme }}>
-  const requestedPath = new URLSearchParams(window.location.search).get("path");
-  const widget = document.querySelector("giscus-widget");
-  if (requestedPath && widget) {
-    widget.setAttribute("mapping", "specific");
-    widget.setAttribute("term", requestedPath);
-  }
-
-  import("https://esm.sh/giscus");
-
-  function updateGiscusTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
-    const theme = isDark ? darkTheme : lightTheme;
-    if (widget) {
-      widget.setAttribute('theme', theme);
-    }
-  }
-
-  // Initial update
-  updateGiscusTheme();
-
-  // Clean up previous observer if exists
-  if (window.giscusThemeObserver) {
-    window.giscusThemeObserver.disconnect();
-  }
-
-  // Create new observer
-  window.giscusThemeObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-        updateGiscusTheme();
-      }
-    });
-  });
-
-  window.giscusThemeObserver.observe(document.documentElement, { attributes: true });
-</script>
+{configured && giscus ? (
+  <div>
+    <p class="mb-4 text-sm text-(--content-meta)">
+      留言需登录 GitHub，内容会公开保存在本站讨论区。
+    </p>
+    <giscus-widget
+      id="comments"
+      class="block w-full"
+      data-thread-path={Astro.props.path}
+      repo={giscus.repo}
+      repoid={giscus.repoId}
+      category={giscus.category}
+      categoryid={giscus.categoryId}
+      mapping="specific"
+      term={path}
+      strict={giscus.strict}
+      reactionsenabled={giscus.reactionsEnabled}
+      emitmetadata={giscus.emitMetadata}
+      inputposition={giscus.inputPosition}
+      theme="light"
+      lang={giscus.lang}
+      loading={giscus.loading}
+    />
+    <p hidden data-giscus-error class="mt-3 text-sm text-(--content-meta)">留言组件暂时加载失败，请刷新后重试。</p>
+    <p class="mt-4 text-sm text-(--content-meta)">
+      也可以<a href={discussionsUrl} target="_blank" rel="noopener noreferrer" class="link text-(--primary)">前往 GitHub 讨论区</a>查看和交流。
+    </p>
+  </div>
+) : (
+  <p class="text-sm text-(--content-meta)">留言区正在准备中，请稍后再来。</p>
+)}
