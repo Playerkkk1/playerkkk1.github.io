@@ -293,6 +293,8 @@ The copyright of Firefly-related image assets belongs to [miHoYo](https://www.mi
 
 This project is licensed under the [MIT license](https://mit-license.org/). See the [LICENSE](./LICENSE) file for details.
 
+The MIT license above applies to the theme software. Unless otherwise noted, original blog text and self-created diagrams that the author is authorized to license are shared under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Third-party materials and code examples follow their stated licenses and original sources; see the [article licensing notes](./docs/pages-cms.md#文章许可怎么理解).
+
 Originally forked from [saicaca/fuwari](https://github.com/saicaca/fuwari). Thanks to the original author for their contributions. 
 
 **Copyright Notice:**

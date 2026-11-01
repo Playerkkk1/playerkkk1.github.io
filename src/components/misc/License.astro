@@ -74,18 +74,28 @@ const licenseIcon = licenseName
         {formatDateToYYYYMMDD(pubDate)}
       </div>
     </div>
-    <div>
+    <div class="min-w-0 flex-1">
       <div class="transition text-black/30 dark:text-white/30 text-sm">
         {i18n(I18nKey.license)}
       </div>
       <a
         href={licenseName ? licenseUrl || undefined : licenseConf.url}
         target="_blank"
-        class="link text-(--primary) line-clamp-2"
+        class="link text-(--primary) break-words"
         >{licenseName || licenseConf.name}</a
       >
     </div>
   </div>
+  {!licenseName && licenseConf.description && (
+    <p class="relative mt-4 text-sm leading-relaxed text-black/60 dark:text-white/60">
+      {licenseConf.description}
+    </p>
+  )}
+  {licenseConf.notice && (
+    <p class="relative mt-2 text-sm leading-relaxed text-black/60 dark:text-white/60">
+      {licenseConf.notice}
+    </p>
+  )}
   <Icon
     name={licenseIcon}
     class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5"

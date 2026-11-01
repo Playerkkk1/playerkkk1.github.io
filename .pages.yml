@@ -115,6 +115,14 @@ content:
         default: ""
         options:
           media: post-images
+      - name: licenseName
+        label: 单篇许可名称
+        type: string
+        description: 通常留空，使用站点默认 CC BY-NC-SA 4.0，仅覆盖有权授权的原创文字与自制图表。只有确实有权采用其他协议时才填写；转载内容须遵循原许可。
+      - name: licenseUrl
+        label: 单篇许可链接
+        type: string
+        description: 设置单篇许可时填写该协议的官方 HTTPS 链接；使用站点默认许可时留空。
       - name: body
         label: Markdown 正文
         type: rich-text

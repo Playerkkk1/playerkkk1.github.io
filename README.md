@@ -292,6 +292,8 @@ location: China # 位置
 
 本项目遵循 [MIT license](https://mit-license.org/) 开源协议，详细查看 [LICENSE](./LICENSE) 文件
 
+上述 MIT 许可适用于主题程序。本站博客文章中有权授权的原创文字与自制图表，除另有标注外采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans)；第三方材料与代码示例的具体授权以文章说明及原始来源为准，参见 [文章许可说明](./docs/pages-cms.md#文章许可怎么理解)。
+
 最初 Fork 自 [saicaca/fuwari](https://github.com/saicaca/fuwari)，感谢原作者的贡献
 
 **版权声明：**
