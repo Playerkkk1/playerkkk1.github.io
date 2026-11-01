@@ -86,8 +86,8 @@ content:
         label: 标签
         type: string
         list: true
-        default: []
-        description: 每项填写一个标签，保存为字符串数组。
+        # No array default: Pages CMS reuses it as the value for Add an item.
+        description: 点击 Add an item 添加输入框，每项填写一个标签；不需要的项请移除。
       - name: draft
         label: 草稿
         type: boolean
