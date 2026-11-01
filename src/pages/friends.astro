@@ -63,6 +63,25 @@ const description =
         </div>
       </div>
 
+      {friendsPageConfig.applicationUrl && (
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <a
+            href={friendsPageConfig.applicationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-friend-application
+            class="btn-regular rounded-xl px-5 py-3 font-bold inline-flex items-center gap-2"
+          >
+            <Icon name="material-symbols:add-link-rounded" class="text-xl" />
+            申请友链
+          </a>
+          {friendsPageConfig.showCustomContent !== false && (
+            <a href="#friend-application" class="link text-sm text-(--primary)">查看申请说明</a>
+          )}
+          <p class="w-full text-sm text-neutral-500 dark:text-neutral-400">前往 GitHub 填写申请表，需登录 GitHub；提交后等待审核。</p>
+        </div>
+      )}
+
       <!-- 搜索框 -->
       {
         items.length > 0 && (

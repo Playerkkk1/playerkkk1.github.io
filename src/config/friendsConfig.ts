@@ -5,6 +5,9 @@ import { cmsFriends } from "../utils/cms-data";
 
 // 友链页面配置
 export const friendsPageConfig: FriendsPageConfig = {
+	// 访客登录 GitHub 后填写专用申请表，由站长审核后录入 CMS。
+	applicationUrl:
+		"https://github.com/Playerkkk1/playerkkk1.github.io/issues/new?template=04-friend-link.yml",
 	// 页面标题，如果留空则使用 i18n 中的翻译
 	title: "",
 

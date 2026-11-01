@@ -1,0 +1,59 @@
+name: 友链申请
+description: 提交你的站点信息，申请与 Player's DevLog 交换友链。
+title: "[友链申请] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢申请友链！请先在你的站点添加本站信息，再填写下面的资料。
+        申请提交后会公开展示，审核通过后由站长添加到友链列表。
+        请只提供可以公开的站点资料，不要填写密码、令牌或其他私密信息。
+  - type: input
+    id: site-name
+    attributes:
+      label: 站点名称
+      placeholder: 你的博客名称
+    validations:
+      required: true
+  - type: input
+    id: site-url
+    attributes:
+      label: 站点地址
+      description: 可正常访问的 HTTPS 网站地址。
+      placeholder: https://example.com/
+    validations:
+      required: true
+  - type: input
+    id: site-description
+    attributes:
+      label: 一句话介绍
+      placeholder: 介绍你的站点或主要记录的内容。
+    validations:
+      required: true
+  - type: input
+    id: avatar-url
+    attributes:
+      label: 头像链接
+      description: 填写可公开访问的 HTTPS 图片地址，没有时可留空。
+      placeholder: https://example.com/avatar.png
+  - type: input
+    id: reciprocal-link
+    attributes:
+      label: 已添加本站友链的页面
+      placeholder: https://example.com/friends/
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: 补充说明
+      description: 可选，例如主要更新方向、希望使用的标签等。
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我的站点支持 HTTPS、可正常访问，已添加本站友链。
+          required: true
+        - label: 我同意以上站点资料公开显示，并理解申请需要审核。
+          required: true
