@@ -1,0 +1,56 @@
+name: CMS comments
+
+on:
+  discussion:
+    types: [created, edited, deleted, category_changed]
+  discussion_comment:
+    types: [created, edited, deleted]
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/cms-comments.yml
+      - scripts/cms-comments.mjs
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Pages CMS action payload (leave empty to refresh)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  discussions: write
+
+concurrency:
+  group: cms-comments
+  cancel-in-progress: false
+
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: master
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Verify comment management logic
+        run: node --test scripts/tests/cms-comments.test.mjs
+      - name: Refresh or delete the selected comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CMS_ACTION_PAYLOAD: ${{ inputs.payload }}
+        run: node scripts/cms-comments.mjs
+      - name: Save the current comment list
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- cms/comments
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "chore: sync CMS comments"
+          # A CMS editor may have saved an article while this job was running.
+          git pull --rebase origin master
+          git push origin HEAD:master

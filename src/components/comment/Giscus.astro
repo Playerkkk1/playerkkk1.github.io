@@ -14,9 +14,6 @@ const discussionsUrl = `https://github.com/${giscus?.repo}/discussions`;
 
 {configured && giscus ? (
   <div>
-    <p class="mb-4 text-sm text-(--content-meta)">
-      留言需登录 GitHub，内容会公开保存在本站讨论区。
-    </p>
     <giscus-widget
       id="comments"
       class="block w-full"
@@ -37,7 +34,7 @@ const discussionsUrl = `https://github.com/${giscus?.repo}/discussions`;
     />
     <p hidden data-giscus-error class="mt-3 text-sm text-(--content-meta)">留言组件暂时加载失败，请刷新后重试。</p>
     <p class="mt-4 text-sm text-(--content-meta)">
-      也可以<a href={discussionsUrl} target="_blank" rel="noopener noreferrer" class="link text-(--primary)">前往 GitHub 讨论区</a>查看和交流。
+      使用 GitHub 登录即可留言，内容公开展示。也可以<a href={discussionsUrl} target="_blank" rel="noopener noreferrer" class="link text-(--primary)">前往 GitHub 讨论区</a>查看和交流。
     </p>
   </div>
 ) : (

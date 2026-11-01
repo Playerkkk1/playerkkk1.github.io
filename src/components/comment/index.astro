@@ -37,7 +37,7 @@ let commentService: string = commentConfig?.type || "none";
 
 {
   commentService !== "none" && (
-    <div id="post-comments" class="card-base p-8 mb-6 relative overflow-x-clip overflow-y-visible">
+    <div id="post-comments" class="card-base p-5 sm:p-8 mb-6 relative overflow-x-clip overflow-y-visible">
       <!-- 装饰性背景（单独裁剪层，卡片本体放开纵向 overflow 以免裁掉评论区浮层） -->
       <div class="absolute inset-0 overflow-hidden rounded-(--radius-large) pointer-events-none">
         <div class="absolute top-0 right-0 w-32 h-32 opacity-5">
@@ -57,7 +57,7 @@ let commentService: string = commentConfig?.type || "none";
         <p class="text-sm text-(--content-meta) ml-4">{i18n(Key.commentSubtitle)}</p>
       </div>
       <!-- 评论内容区域 -->
-      <div class="relative z-10 pl-2 pr-2">
+      <div class="relative z-10 min-w-0">
         {commentService === "twikoo" && <Twikoo path={path} />}
         {commentService === "waline" && <Waline path={path} />}
         {commentService === "giscus" && <Giscus path={path} />}

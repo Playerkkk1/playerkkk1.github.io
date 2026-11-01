@@ -178,6 +178,81 @@ content:
           multiple: { max: 9 }
           unique: true
 
+  - name: comments
+    label: 评论管理
+    type: collection
+    path: cms/comments
+    format: json
+    subfolders: false
+    exclude: [.gitkeep]
+    operations: { create: false, rename: false, delete: false }
+    view:
+      primary: body
+      fields: [body, author, thread, kind, createdAt]
+      search: [body, author, thread]
+      sort: [createdAt, author, thread]
+      default: { sort: createdAt, order: desc }
+    actions:
+      - name: refresh-comments
+        label: 刷新评论列表
+        scope: collection
+        workflow: cms-comments.yml
+        ref: master
+        confirm: false
+      - name: delete-comment
+        label: 删除这条评论
+        scope: entry
+        workflow: cms-comments.yml
+        ref: master
+        confirm:
+          title: 删除这条公开评论？
+          message: 将从 GitHub Discussions 和博客中删除这条评论。有回复时 GitHub 会保留已删除占位，回复继续显示。
+          button: 确认删除
+    fields:
+      - name: body
+        label: 评论内容
+        type: text
+        readonly: true
+        description: 展示真实评论。删除请使用上方“删除这条评论”操作，等待工作流成功后刷新列表。
+      - name: author
+        label: 评论者
+        type: string
+        readonly: true
+      - name: thread
+        label: 所属文章或页面
+        type: string
+        readonly: true
+      - name: kind
+        label: 评论类型
+        type: string
+        readonly: true
+      - name: createdAt
+        label: 发布时间
+        type: date
+        readonly: true
+        options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ssXXX" }
+      - name: updatedAt
+        label: 最后修改
+        type: date
+        readonly: true
+        options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ssXXX" }
+      - name: url
+        label: GitHub 原评论地址
+        type: string
+        readonly: true
+      - name: id
+        type: string
+        hidden: true
+        readonly: true
+      - name: discussionNumber
+        type: number
+        hidden: true
+        readonly: true
+      - name: parentId
+        type: string
+        hidden: true
+        readonly: true
+
   - name: friends
     label: 友链管理
     type: file
