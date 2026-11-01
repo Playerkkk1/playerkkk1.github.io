@@ -13,6 +13,8 @@ import SakuraEffect from "@components/features/SakuraEffect.astro";
 import WavesEffect from "@components/features/WavesEffect.astro";
 import ConfigCarrier from "@components/layout/ConfigCarrier.astro";
 import BrowserChrome from "@/components/layout/BrowserChrome.astro";
+import PageViewManager from "@/components/misc/PageViewManager.astro";
+import { pageViewConfig } from "@/config/pageViewConfig";
 
 import {
 	analyticsConfig,
@@ -583,6 +585,7 @@ const ogImageAlt = propsOgImageAlt ?? pageTitle;
 
     <!-- GitHub 卡片客户端实时补全（forks/stars） -->
     <GithubCardManager />
+    {pageViewConfig.enable && <PageViewManager />}
   </body>
 </html>
 

@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import { commentConfig } from "@/config";
+import { pageViewConfig } from "@/config/pageViewConfig";
+import PageViews from "@/components/misc/PageViews.astro";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import { formatDateToYYYYMMDD } from "@/utils/date-utils";
@@ -179,8 +181,10 @@ const visibleTags =
     )
   }
 
+  {!isHome && id && pageViewConfig.enable && <PageViews id={id} />}
+
   {
-    !isHome &&
+    !pageViewConfig.enable && !isHome &&
       commentConfig.type === "twikoo" &&
       commentConfig.twikoo?.visitorCount &&
       id && (
@@ -202,7 +206,7 @@ const visibleTags =
   }
 
   {
-    !isHome &&
+    !pageViewConfig.enable && !isHome &&
       commentConfig.type === "waline" &&
       commentConfig.waline?.visitorCount &&
       id && (
@@ -227,7 +231,7 @@ const visibleTags =
   }
 
   {
-    !isHome &&
+    !pageViewConfig.enable && !isHome &&
       commentConfig.type === "artalk" &&
       commentConfig.artalk?.visitorCount &&
       id && (

@@ -178,6 +178,62 @@ content:
           multiple: { max: 9 }
           unique: true
 
+  - name: friends
+    label: 友链管理
+    type: file
+    path: src/data/friends.json
+    format: json
+    operations: { delete: false }
+    fields:
+      - name: enabled
+        label: 显示友链列表
+        type: boolean
+        required: true
+        default: true
+        description: 关闭后保留数据并隐藏全部友链；友链页及本站信息仍可访问。
+      - name: links
+        label: 友链列表
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}"
+        description: 添加真实友链，权重越大越靠前；可关闭单项启用开关暂时隐藏。清空列表会显示空状态。
+        fields:
+          - name: title
+            label: 站点名称
+            type: string
+            required: true
+          - name: siteurl
+            label: 站点地址
+            type: string
+            required: true
+            pattern:
+              regex: '^https://[^\s]+$'
+              message: 请填写完整的 HTTPS 网站地址。
+          - name: imgurl
+            label: 站点头像
+            type: image
+            options: { media: site-images }
+            description: 可上传头像；留空显示默认站点图标。
+          - name: desc
+            label: 一句话介绍
+            type: text
+          - name: tags
+            label: 标签
+            type: string
+            list: true
+          - name: weight
+            label: 排序权重
+            type: number
+            required: true
+            default: 0
+            options: { step: 1 }
+          - name: enabled
+            label: 启用
+            type: boolean
+            default: true
+
   - name: profile
     label: 个人资料
     type: file

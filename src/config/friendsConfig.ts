@@ -1,6 +1,7 @@
 import type { FriendLink, FriendsPageConfig } from "../types/friendsConfig";
+import { cmsFriends } from "../utils/cms-data";
 
-// 可以在src/content/spec/friends.md中编写友链页面下方的自定义内容
+// 在 src/content/spec/friends.mdx 编写下方自定义内容；列表由 Pages CMS 管理。
 
 // 友链页面配置
 export const friendsPageConfig: FriendsPageConfig = {
@@ -21,7 +22,7 @@ export const friendsPageConfig: FriendsPageConfig = {
 };
 
 // 友链配置
-export const friendsConfig: FriendLink[] = [];
+export const friendsConfig: FriendLink[] = cmsFriends;
 
 // 获取启用的友链并进行排序
 export const getEnabledFriends = (): FriendLink[] => {

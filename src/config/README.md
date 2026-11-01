@@ -21,6 +21,7 @@ src/config/
 ├── friendsConfig.ts          # 友链配置
 ├── galleryConfig.ts          # 相册配置
 ├── licenseConfig.ts          # 许可证配置
+├── pageViewConfig.ts         # 独立文章浏览量公共统计
 ├── musicConfig.ts            # 音乐播放器配置
 ├── navBarConfig.ts           # 导航栏配置（含 LinkPresets 链接预设）
 ├── pioConfig.ts              # 看板娘配置（Spine、Live2D）
@@ -61,6 +62,7 @@ import { profileConfig } from "@/config/profileConfig";
 | `expressiveCodeConfig.ts` | 代码高亮配置（亮色/暗色主题、折叠、语言徽章） |
 | `fontConfig.ts` | 字体配置（字体列表、回退、预加载） |
 | `friendsConfig.ts` | 友链配置（友链列表、页面设置） |
+| `pageViewConfig.ts` | 独立文章浏览量开关与公共统计接口，不依赖评论后端 |
 | `galleryConfig.ts` | 相册配置（相册列表、瀑布流列宽） |
 | `licenseConfig.ts` | 许可证配置（CC 协议等） |
 | `musicConfig.ts` | 音乐播放器配置（Meting API / 本地音乐、导航栏和侧边栏开关） |
@@ -74,6 +76,7 @@ import { profileConfig } from "@/config/profileConfig";
 ## 📝 说明
 
 - 所有配置文件均可通过 `index.ts` 统一导入
+- 友链列表现在由 Pages CMS 的「友链管理」维护，数据位于 `src/data/friends.json`；`friendsConfig.ts` 保留原页面设置和权重排序逻辑。友链与公共浏览量使用说明见 [管理文档](../../docs/friends-and-page-views.md)。
 - 每个配置文件对应 `types/` 目录下的独立类型定义文件
 - `siteConfig.ts` 只保留站点核心信息，不聚合其他模块配置
 - `navBarConfig.ts` 底部的 `LinkPresets` 可自由自定义导航栏链接的名称、图标和 URL

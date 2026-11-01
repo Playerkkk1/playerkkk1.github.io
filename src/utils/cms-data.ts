@@ -1,12 +1,45 @@
 import { z } from "astro/zod";
-import type { BackgroundWallpaperConfig } from "../types/backgroundWallpaper";
 import appearance from "../data/appearance.json";
+import friends from "../data/friends.json";
 import music from "../data/music.json";
 import profile from "../data/profile.json";
+import type { BackgroundWallpaperConfig } from "../types/backgroundWallpaper";
+import type { FriendLink } from "../types/friendsConfig";
 
 // CMS 删除可选图片时可能写入 null。统一空值，旧配置继续作为回退。
 const image = z.preprocess((v) => v ?? "", z.string());
 const images = z.preprocess((v) => v ?? [], z.array(z.string()));
+
+export const cmsFriends: FriendLink[] = z
+	.object({
+		enabled: z.boolean().default(true),
+		links: z
+			.array(
+				z.object({
+					title: z.string().trim().min(1),
+					imgurl: image,
+					desc: z
+						.string()
+						.nullish()
+						.transform((value) => value ?? ""),
+					siteurl: z.url().refine((value) => {
+						const target = new URL(value);
+						return (
+							target.protocol === "https:" &&
+							!target.username &&
+							!target.password
+						);
+					}, "友链地址须为不含账号密码的 HTTPS 链接"),
+					tags: images,
+					weight: z.number().default(0),
+					enabled: z.boolean().default(true),
+				}),
+			)
+			.nullish()
+			.transform((value) => value ?? []),
+	})
+	.transform(({ enabled, links }) => (enabled ? links : []))
+	.parse(friends);
 
 export const cmsProfile: {
 	avatar: string;

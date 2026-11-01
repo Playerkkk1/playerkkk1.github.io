@@ -12,6 +12,7 @@ import {
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { url } from "@/utils/url-utils";
 import "@/styles/pages/common.css";
 import "@/styles/pages/friends.css";
 
@@ -129,9 +130,10 @@ const description =
               {/* 头像 */}
               <div class="relative w-16 h-16 shrink-0 rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 border border-black/5 dark:border-white/5 group-hover:scale-105 transition-transform duration-300">
                 <img
-                  src={item.imgurl}
+                  src={item.imgurl || url("/favicon/players-devlog-favicon.png")}
                   alt={item.title}
                   class="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
 
