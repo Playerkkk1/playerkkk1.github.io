@@ -1,12 +1,13 @@
 ---
+import CategorySeriesPanel from "@/components/controls/CategorySeriesPanel.astro";
 import { siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import { getSortedPostsList } from "@/utils/content-utils";
 import { getPostUrlBySlug, url } from "@/utils/url-utils";
 
-// 归档列表：全量按年分组，服务端渲染。筛选（?tag=/?category=/?uncategorized）
-// 与年份折叠由客户端脚本处理——数据本身在构建期已全部就绪。
+// 同一份文章数据在构建时生成知识目录与时间轴。
+// 静态部署下，浏览器通过原有查询参数选择视图并应用筛选。
 const sortedPostsList = await getSortedPostsList();
 
 // 严格按发布时间倒序（不受置顶影响），镜像原 Svelte 版行为
@@ -41,7 +42,8 @@ function formatTag(tagList: string[]) {
 
 // 传给客户端脚本的 i18n 文案与配置
 const i18nStrings = {
-	categories: i18n(I18nKey.categories),
+	archive: i18n(I18nKey.archive),
+	categories: i18n(I18nKey.knowledgeBase),
 	tags: i18n(I18nKey.tags),
 	uncategorized: i18n(I18nKey.uncategorized),
 	postCount: i18n(I18nKey.postCount),
@@ -53,11 +55,10 @@ const foldOnFilter = collapseAllButFirst;
 ---
 
 <archive-panel
-  class="card-base px-8 py-6"
   data-fold={foldOnFilter ? "true" : "false"}
 >
   {/* 筛选头部：默认隐藏，客户端在有筛选时填充并显示 */}
-  <div id="archive-filter-header" class="mb-5 hidden">
+  <div id="archive-filter-header" class="card-base px-5 md:px-8 py-5 mb-4 hidden">
     <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
       <div class="min-w-0 text-sm text-75">
         <a id="archive-filter-link" href={tagsBaseUrl} class="text-50 hover:text-(--primary) transition-colors"></a>
@@ -71,6 +72,8 @@ const foldOnFilter = collapseAllButFirst;
     </div>
   </div>
 
+  <CategorySeriesPanel posts={posts} />
+  <div data-time-panel class="card-base px-5 md:px-8 py-6">
   {groups.map((group, groupIndex) => {
     const collapsed = collapseAllButFirst && groupIndex > 0;
     return (
@@ -152,6 +155,8 @@ const foldOnFilter = collapseAllButFirst;
       </div>
     );
   })}
+  </div>
+  <p data-archive-empty hidden class="card-base px-5 py-10 text-center text-50">{i18n(I18nKey.noData)}</p>
 </archive-panel>
 
 <style>
@@ -161,32 +166,77 @@ const foldOnFilter = collapseAllButFirst;
   .archive-arrow {
     display: inline-flex;
   }
+  archive-panel :global([hidden]) {
+    display: none !important;
+  }
 </style>
 
 <script is:inline define:vars={{ i18nStrings, tagsBaseUrl, categoriesBaseUrl }}>
   class ArchivePanel extends HTMLElement {
-    constructor() {
-      super();
-      // 避免 swup 重复初始化
-      if (this.dataset.initialized === "true") return;
-      this.dataset.initialized = "true";
+    connectedCallback() {
       this.init();
+      this.bindYearToggles();
+      this.onLocationChange = () => this.init();
+      window.addEventListener("popstate", this.onLocationChange);
+    }
+
+    disconnectedCallback() {
+      window.removeEventListener("popstate", this.onLocationChange);
     }
 
     init() {
       const params = new URLSearchParams(window.location.search);
-      const tags = params.has("tag") ? params.getAll("tag") : [];
-      const categories = params.has("category") ? params.getAll("category") : [];
+      const tags = params.getAll("tag").map((value) => value.trim());
+      const categories = params.getAll("category").map((value) => value.trim());
       const uncategorized = params.get("uncategorized");
-
+      const knowledgeMode = categories.length > 0 || !!uncategorized;
       const hasFilter = tags.length > 0 || categories.length > 0 || !!uncategorized;
-
+      this.dataset.mode = knowledgeMode ? "knowledge" : "time";
+      this.querySelector("[data-knowledge-panel]").hidden = !knowledgeMode;
+      this.querySelector("[data-time-panel]").hidden = knowledgeMode;
+      this.querySelector("#archive-filter-header").classList.toggle("hidden", !hasFilter);
+      const count = knowledgeMode
+        ? this.applyKnowledgeFilter(tags, categories, !!uncategorized)
+        : this.applyFilter(tags, categories, !!uncategorized);
+      this.querySelector("[data-archive-empty]").hidden = count > 0;
+      if (!knowledgeMode) this.querySelector("[data-time-panel]").hidden = count === 0;
       if (hasFilter) {
-        this.applyFilter(tags, categories, !!uncategorized);
-        this.updateBannerTitle(tags, categories, !!uncategorized);
+        this.renderFilterHeader(tags, categories, !!uncategorized, count);
       }
+      this.updateBannerTitle(tags, categories, !!uncategorized);
+    }
 
-      this.bindYearToggles();
+    matchesRow(row, tags, categories, uncategorized) {
+      const rowTags = JSON.parse(row.dataset.tags || "[]");
+      const category = (row.dataset.category || "").trim();
+      return (tags.length === 0 || rowTags.some((tag) => tags.includes(tag)))
+        && (categories.length === 0 || (!!category && categories.includes(category)))
+        && (!uncategorized || !category);
+    }
+
+    applyKnowledgeFilter(tags, categories, uncategorized) {
+      let total = 0;
+      for (const category of this.querySelectorAll("[data-knowledge-category]")) {
+        let categoryCount = 0;
+        for (const card of category.querySelectorAll("series-accordion")) {
+          let count = 0;
+          for (const row of card.querySelectorAll("[data-series-post]")) {
+            row.hidden = !this.matchesRow(row, tags, categories, uncategorized);
+            if (!row.hidden) count++;
+          }
+          card.hidden = count === 0;
+          card.querySelector("[data-series-count]").textContent = String(count);
+          const expanded = count > 0 && categoryCount === 0;
+          card.querySelector("button").setAttribute("aria-expanded", String(expanded));
+          const content = card.querySelector(".series-acc-content");
+          content.dataset.open = String(expanded);
+          content.inert = !expanded;
+          categoryCount += count;
+        }
+        category.hidden = categoryCount === 0;
+        total += categoryCount;
+      }
+      return total;
     }
 
     // 按筛选条件隐藏不匹配的文章行，重算每年计数，隐藏空年份，重新折叠
@@ -201,24 +251,7 @@ const foldOnFilter = collapseAllButFirst;
         let visibleCount = 0;
 
         for (const row of rows) {
-          let rowTags = [];
-          try {
-            rowTags = JSON.parse(row.dataset.tags || "[]");
-          } catch {
-            rowTags = [];
-          }
-          const rowCategory = row.dataset.category || "";
-
-          let match = true;
-          if (tags.length > 0) {
-            match = match && rowTags.some((t) => tags.includes(t));
-          }
-          if (categories.length > 0) {
-            match = match && !!rowCategory && categories.includes(rowCategory);
-          }
-          if (uncategorized) {
-            match = match && !rowCategory;
-          }
+          const match = this.matchesRow(row, tags, categories, uncategorized);
 
           row.hidden = !match;
           if (match) visibleCount++;
@@ -247,8 +280,7 @@ const foldOnFilter = collapseAllButFirst;
         this.setBlockCollapsed(block, shouldCollapse);
       });
 
-      // 填充并显示筛选头部
-      this.renderFilterHeader(tags, categories, uncategorized, totalVisible);
+      return totalVisible;
     }
 
     setBlockCollapsed(block, collapsed) {
@@ -320,7 +352,7 @@ const foldOnFilter = collapseAllButFirst;
       const bannerTitle = document.querySelector(".banner-page-title-text");
       if (!bannerTitle) return;
 
-      let newTitle = "";
+      let newTitle = i18nStrings.archive;
       if (categories.length > 0) {
         newTitle = categories.join(" / ");
       } else if (uncategorized) {
@@ -342,7 +374,7 @@ const foldOnFilter = collapseAllButFirst;
         const arrow = block.querySelector(".archive-arrow");
         if (!toggle || !content) continue;
 
-        toggle.addEventListener("click", () => {
+        toggle.onclick = () => {
           const willCollapse = !content.hidden;
           content.hidden = willCollapse;
           toggle.setAttribute("aria-expanded", willCollapse ? "false" : "true");
@@ -359,7 +391,7 @@ const foldOnFilter = collapseAllButFirst;
               );
             });
           }
-        });
+        };
       }
     }
   }

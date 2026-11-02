@@ -1,12 +1,12 @@
 {
-  "enabled": true,
-  "volume": 0.7,
-  "playlist": [
-    {
-      "name": "被偷走的玩具",
-      "artist": "阿扑",
-      "url": "/assets/music/阿扑 - 被偷走的玩具.mp3",
-      "cover": "/assets/music/cover/b44e7f13e3ef070359e661041f5b4b1a.jpg"
-    }
-  ]
+	"enabled": true,
+	"volume": 0.7,
+	"playlist": [
+		{
+			"name": "被偷走的玩具",
+			"artist": "阿扑",
+			"url": "/assets/music/阿扑 - 被偷走的玩具.mp3",
+			"cover": "/assets/music/cover/b44e7f13e3ef070359e661041f5b4b1a.jpg"
+		}
+	]
 }

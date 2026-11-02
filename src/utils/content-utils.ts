@@ -128,14 +128,12 @@ export async function getSeriesPosts(
 export type Series = { name: string; count: number; posts: PostForList[] };
 
 /**
- * 获取全站所有系列（按文章中 series 字段分组，每组内部按系列序号排序）
- * 供 /series/ 索引页使用
+ * 按现有 series 字段分组；系列名称稳定排序，每组复用系列序号排序。
+ * 分类知识目录与全站系列页共用，不改变传入文章数组。
  */
-export async function getSeriesList(): Promise<Series[]> {
-	const allPosts = await getSortedPostsList();
-
+export function groupPostsBySeries(posts: PostForList[]): Series[] {
 	const groupMap = new Map<string, PostForList[]>();
-	for (const post of allPosts) {
+	for (const post of posts) {
 		const name = post.data.series.trim();
 		if (!name) continue;
 		if (!groupMap.has(name)) groupMap.set(name, []);
@@ -148,8 +146,20 @@ export async function getSeriesList(): Promise<Series[]> {
 		seriesList.push({ name, count: posts.length, posts });
 	}
 
-	seriesList.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+	seriesList.sort(
+		(a, b) =>
+			a.name.localeCompare(b.name, "zh-CN", { numeric: true }) ||
+			(a.name === b.name ? 0 : a.name < b.name ? -1 : 1),
+	);
 	return seriesList;
+}
+
+export async function getSeriesList(): Promise<Series[]> {
+	const seriesList = groupPostsBySeries(await getSortedPostsList());
+	// 全站系列页保留原有按篇数排序；分类知识目录使用名称顺序。
+	return seriesList.sort(
+		(a, b) => b.count - a.count || a.name.localeCompare(b.name),
+	);
 }
 export type Tag = {
 	name: string;

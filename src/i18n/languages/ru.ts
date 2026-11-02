@@ -24,6 +24,9 @@ export const ru: Translation = {
 
 	[Key.tags]: "Теги",
 	[Key.categories]: "Категории",
+	[Key.knowledgeBase]: "База знаний",
+	[Key.knowledgeBaseDescription]: "Технические заметки по категориям и сериям",
+	[Key.otherArticles]: "Другие статьи",
 	[Key.allCategories]: "Все категории",
 	[Key.allTags]: "Все теги",
 	[Key.allSeries]: "Все серии",

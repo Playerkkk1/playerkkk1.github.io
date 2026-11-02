@@ -90,17 +90,16 @@ export const siteConfig: SiteConfig = {
 
 	// Favicon 配置
 	// 如果启用了OpenGraph图片功能，数组中需要包含png格式的favicon图标
-favicon: [
-  {
-    src: "/favicon.ico",
-    sizes: "16x16 32x32 48x48 64x64",
-  },
-  {
-    src: "/favicon/firefly-128.png",
-    sizes: "128x128",
-  },
-],
-
+	favicon: [
+		{
+			src: "/favicon.ico",
+			sizes: "16x16 32x32 48x48 64x64",
+		},
+		{
+			src: "/favicon/firefly-128.png",
+			sizes: "128x128",
+		},
+	],
 
 	// 导航栏配置
 	navbar: {

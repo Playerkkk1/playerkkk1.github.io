@@ -24,6 +24,9 @@ export const ko: Translation = {
 
 	[Key.tags]: "태그",
 	[Key.categories]: "카테고리",
+	[Key.knowledgeBase]: "지식 모음",
+	[Key.knowledgeBaseDescription]: "카테고리와 시리즈별로 기술 노트 읽기",
+	[Key.otherArticles]: "기타 글",
 	[Key.allCategories]: "모든 카테고리",
 	[Key.allTags]: "모든 태그",
 	[Key.allSeries]: "모든 시리즈",

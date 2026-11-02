@@ -24,6 +24,10 @@ export const en: Translation = {
 
 	[Key.tags]: "Tags",
 	[Key.categories]: "Categories",
+	[Key.knowledgeBase]: "Knowledge Base",
+	[Key.knowledgeBaseDescription]:
+		"Explore technical notes by category and series",
+	[Key.otherArticles]: "Other articles",
 	[Key.allCategories]: "All Categories",
 	[Key.allTags]: "All Tags",
 	[Key.allSeries]: "All Series",

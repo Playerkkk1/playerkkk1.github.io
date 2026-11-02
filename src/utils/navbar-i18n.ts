@@ -19,6 +19,7 @@ const NAVBAR_DEFAULT_NAMES: Record<string, I18nKey> = {
 	主页: I18nKey.home,
 	归档: I18nKey.archive,
 	分类: I18nKey.categories,
+	知识库: I18nKey.knowledgeBase,
 	标签: I18nKey.tags,
 	系列: I18nKey.series,
 	友链: I18nKey.friends,

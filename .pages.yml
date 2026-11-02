@@ -82,6 +82,7 @@ content:
         label: 分类
         type: string
         default: ""
+        description: 知识库的一级分类；相同名称归入同一分类，目录位置不决定文章分类。
       - name: tags
         label: 标签
         type: string
@@ -92,14 +93,14 @@ content:
         label: 系列名称
         type: string
         default: ""
-        description: 可选。同一系列填写完全相同的名称，例如“六级学习笔记”；留空表示独立文章。
+        description: 可选。知识库分类下的系列分组；同一系列填写完全相同的名称，不需要预先创建。留空归入“其他文章”，不会自动推断系列。
       - name: seriesOrder
         label: 系列顺序
         type: number
         options:
           min: 0
           step: 1
-        description: 可选。按 1、2、3 填写阅读顺序；数字越小越靠前。留空则排在已填写顺序的文章之后，系列名称为空时不参与系列导航。
+        description: 可选。按 1、2、3 填写学习顺序，数字越小越靠前，与发布日期无关。留空排在已填写顺序的文章之后；相同序号或均留空时按发布日期倒序、标题排序。没有系列名称时不参与系列排序。
       - name: draft
         label: 草稿
         type: boolean

@@ -4,6 +4,7 @@ export function safeMediaUrl(value: string): string {
 	if (
 		path.startsWith("/") &&
 		!path.startsWith("//") &&
+		// biome-ignore lint/suspicious/noControlCharactersInRegex: Intentionally reject C0 control characters in public media paths.
 		!/[\\\u0000-\u001f]/.test(path)
 	) {
 		// CMS 返回文件路径，不一定已编码。逐段编码避免空格、#、中文被当成 URL 语法。

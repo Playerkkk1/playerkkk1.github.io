@@ -7,8 +7,9 @@ import { formatDateI18n } from "@/utils/date-utils";
 import { safeMediaUrl } from "@/utils/media-url";
 import "@/styles/pages/common.css";
 
-const videos = (await getCollection("videos", ({ data }) => !data.draft))
-	.sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
+const videos = (await getCollection("videos", ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.published.getTime() - a.data.published.getTime(),
+);
 ---
 
 <MainGridLayout title="视频" description="记录与分享值得观看的影像。">

@@ -24,6 +24,9 @@ export const ja: Translation = {
 
 	[Key.tags]: "タグ",
 	[Key.categories]: "カテゴリ",
+	[Key.knowledgeBase]: "ナレッジベース",
+	[Key.knowledgeBaseDescription]: "カテゴリとシリーズで技術ノートを読む",
+	[Key.otherArticles]: "その他の記事",
 	[Key.allCategories]: "すべてのカテゴリ",
 	[Key.allTags]: "すべてのタグ",
 	[Key.allSeries]: "すべてのシリーズ",

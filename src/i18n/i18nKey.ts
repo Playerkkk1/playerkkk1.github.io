@@ -20,6 +20,9 @@ enum I18nKey {
 
 	tags = "tags",
 	categories = "categories",
+	knowledgeBase = "knowledgeBase",
+	knowledgeBaseDescription = "knowledgeBaseDescription",
+	otherArticles = "otherArticles",
 	allCategories = "allCategories",
 	allTags = "allTags",
 	allSeries = "allSeries",

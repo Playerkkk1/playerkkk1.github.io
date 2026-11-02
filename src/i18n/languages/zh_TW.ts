@@ -24,6 +24,9 @@ export const zh_TW: Translation = {
 
 	[Key.tags]: "標籤",
 	[Key.categories]: "分類",
+	[Key.knowledgeBase]: "知識庫",
+	[Key.knowledgeBaseDescription]: "按分類與系列，循序閱讀技術筆記",
+	[Key.otherArticles]: "其他文章",
 	[Key.allCategories]: "全部分類",
 	[Key.allTags]: "全部標籤",
 	[Key.allSeries]: "全部系列",

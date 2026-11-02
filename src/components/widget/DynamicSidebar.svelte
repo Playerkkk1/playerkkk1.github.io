@@ -7,10 +7,10 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { onMount } from "svelte";
 import { formatDynamicDate } from "@/utils/date-utils";
+import { dynamicAnchor } from "@/utils/dynamic-utils";
 import { fetchWithDedup } from "@/utils/fetch-dedup";
 import { fetchMemos } from "@/utils/memos-adapter";
 import { url } from "@/utils/url-utils";
-import { dynamicAnchor } from "@/utils/dynamic-utils";
 
 interface DynamicEntry {
 	id: string;

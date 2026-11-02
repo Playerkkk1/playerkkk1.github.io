@@ -1,0 +1,38 @@
+---
+import SeriesAccordion from "@/components/misc/SeriesAccordion.astro";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import { groupPostsBySeries, type PostForList } from "@/utils/content-utils";
+
+interface Props {
+	posts: PostForList[];
+}
+const { posts } = Astro.props;
+const categories = new Map<string, PostForList[]>();
+for (const post of posts) {
+	const category = (post.data.category || "").trim();
+	if (!categories.has(category)) categories.set(category, []);
+	categories.get(category)?.push(post);
+}
+const groups = Array.from(categories.entries()).sort(([a], [b]) =>
+	a.localeCompare(b, "zh-CN", { numeric: true }),
+);
+---
+
+<div data-knowledge-panel hidden class="space-y-6">
+	{groups.map(([category, categoryPosts], categoryIndex) => {
+		const series = groupPostsBySeries(categoryPosts);
+		const otherPosts = categoryPosts.filter((post) => !post.data.series.trim());
+		if (otherPosts.length) series.push({ name: i18n(I18nKey.otherArticles), count: otherPosts.length, posts: otherPosts });
+		return (
+			<section data-knowledge-category={category} hidden>
+				<h2 class="text-xl font-bold text-(--primary) mb-4 break-words">{category || i18n(I18nKey.uncategorized)}</h2>
+				<div class="space-y-3">
+					{series.map((group, index) => (
+						<SeriesAccordion id={`knowledge-${categoryIndex}-${index}`} name={group.name} posts={group.posts} expanded={index === 0} />
+					))}
+				</div>
+			</section>
+		);
+	})}
+</div>

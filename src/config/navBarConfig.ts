@@ -22,11 +22,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		url: "#",
 		icon: "material-symbols:article",
 		children: [
-			// 归档
-			LinkPresets.Archive,
-
-			// 分类
+			// 知识库与时间归档
 			LinkPresets.Categories,
+			LinkPresets.Archive,
 
 			// 标签
 			LinkPresets.Tags,
@@ -114,7 +112,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				external: true,
 				icon: "fa7-brands:github",
 			},
-
 		],
 	});
 
@@ -150,7 +147,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:archive",
 	},
 	Categories: {
-		name: "分类",
+		name: "知识库",
 		url: "/categories/",
 		icon: "material-symbols:folder-open-rounded",
 	},

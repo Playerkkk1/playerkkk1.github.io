@@ -1,0 +1,108 @@
+---
+import { Icon } from "astro-icon/components";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import type { PostForList } from "@/utils/content-utils";
+import { formatDateToYYYYMMDD } from "@/utils/date-utils";
+import { getPostUrlBySlug } from "@/utils/url-utils";
+
+interface Props {
+	id: string;
+	name: string;
+	posts: PostForList[];
+	expanded?: boolean;
+}
+
+const { id, name, posts, expanded = false } = Astro.props;
+---
+
+<series-accordion class="series-acc card-base overflow-hidden" data-series={name}>
+	<h3>
+		<button
+			id={`${id}-toggle`}
+			type="button"
+			aria-expanded={expanded ? "true" : "false"}
+			aria-controls={`${id}-content`}
+			class="series-acc-header group flex w-full items-center gap-3 p-5 md:p-6 cursor-pointer text-left transition-colors"
+		>
+			<span class="shrink-0 w-11 h-11 rounded-full bg-(--primary)/10 group-hover:bg-(--primary)/20 flex items-center justify-center transition-colors">
+				<Icon name="material-symbols:layers" aria-hidden="true" class="text-2xl text-(--primary)" />
+			</span>
+			<span class="flex-1 min-w-0">
+				<span class="block text-lg font-bold text-90 break-words group-hover:text-(--primary) transition-colors">{name}</span>
+				<span class="block text-sm text-50 mt-0.5">
+					<span data-series-count>{posts.length}</span> {i18n(I18nKey.postsCount)}
+				</span>
+			</span>
+			<Icon name="material-symbols:keyboard-arrow-down-rounded" aria-hidden="true" class="acc-arrow shrink-0 text-xl text-30 transition-transform duration-300" />
+		</button>
+	</h3>
+	<div
+		id={`${id}-content`}
+		class="series-acc-content"
+		data-open={String(expanded)}
+		aria-labelledby={`${id}-toggle`}
+		inert={!expanded}
+	>
+		<div class="min-h-0 overflow-hidden">
+			<ol class="px-4 md:px-6 pb-4">
+				{posts.map((post, index) => (
+					<li data-series-post data-category={(post.data.category || "").trim()} data-tags={JSON.stringify(post.data.tags)}>
+						<a href={getPostUrlBySlug(post.id)} class="series-post-link group rounded-lg transition-colors hover:bg-(--btn-plain-bg-hover)">
+							<span class="series-post-number rounded-md bg-(--enter-btn-bg) text-(--primary) text-sm font-bold">{String(index + 1).padStart(2, "0")}</span>
+							<span class="series-post-title text-sm font-bold text-75 group-hover:text-(--primary) transition-colors">{post.data.title}</span>
+							<time datetime={formatDateToYYYYMMDD(post.data.published)} class="series-post-date text-xs text-50 tabular-nums">{formatDateToYYYYMMDD(post.data.published)}</time>
+						</a>
+					</li>
+				))}
+			</ol>
+		</div>
+	</div>
+</series-accordion>
+
+<style>
+	series-accordion { display: block; min-width: 0; }
+	.series-acc-header:focus-visible, .series-post-link:focus-visible { outline: 2px solid var(--primary); outline-offset: -3px; }
+	.series-acc-header[aria-expanded="true"] .acc-arrow { transform: rotate(180deg); }
+	.series-acc-content { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows 300ms ease-in-out, opacity 300ms ease-in-out, visibility 300ms; }
+	.series-acc-content[data-open="true"] { grid-template-rows: 1fr; opacity: 1; visibility: visible; }
+	.series-post-link { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; align-items: start; gap: 0.75rem; padding: 0.8rem 0.5rem; }
+	li + li .series-post-link { border-top: 1px dashed var(--line-divider); }
+	.series-post-number { display: flex; align-items: center; justify-content: center; min-height: 1.75rem; }
+	.series-post-title { line-height: 1.75; overflow-wrap: anywhere; }
+	.series-post-date { padding-top: 0.4rem; white-space: nowrap; }
+	[hidden] { display: none !important; }
+	@media (max-width: 639px) {
+		.series-post-link { grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.65rem; row-gap: 0.2rem; }
+		.series-post-number { grid-row: span 2; }
+		.series-post-date { grid-column: 2; padding-top: 0; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.series-acc-content, .acc-arrow { transition: none; }
+	}
+</style>
+
+<script>
+	class SeriesAccordion extends HTMLElement {
+		connectedCallback() {
+			this.querySelector("button")?.addEventListener("click", this.toggle);
+		}
+		disconnectedCallback() {
+			this.querySelector("button")?.removeEventListener("click", this.toggle);
+		}
+		private toggle = () => {
+			this.setExpanded(this.querySelector("button")?.getAttribute("aria-expanded") !== "true");
+		};
+		setExpanded(expanded: boolean) {
+			const button = this.querySelector("button");
+			const content = this.querySelector<HTMLElement>(".series-acc-content");
+			if (!button || !content) return;
+			// 收起时将焦点移回标题，避免焦点留在隐藏链接中。
+			if (!expanded && content.contains(document.activeElement)) button.focus();
+			button.setAttribute("aria-expanded", String(expanded));
+			content.dataset.open = String(expanded);
+			content.inert = !expanded;
+		}
+	}
+	if (!customElements.get("series-accordion")) customElements.define("series-accordion", SeriesAccordion);
+</script>

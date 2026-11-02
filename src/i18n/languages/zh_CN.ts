@@ -24,6 +24,9 @@ export const zh_CN: Translation = {
 
 	[Key.tags]: "标签",
 	[Key.categories]: "分类",
+	[Key.knowledgeBase]: "知识库",
+	[Key.knowledgeBaseDescription]: "按分类与系列，循序阅读技术笔记",
+	[Key.otherArticles]: "其他文章",
 	[Key.allCategories]: "全部分类",
 	[Key.allTags]: "全部标签",
 	[Key.allSeries]: "全部系列",

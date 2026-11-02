@@ -1,13 +1,13 @@
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import sanitizeHtml from "sanitize-html";
-import { safeMediaUrl } from "@/utils/media-url";
-import { url } from "@/utils/url-utils";
 import {
 	dynamicSearchText,
 	dynamicSlug,
 	sortDynamics,
 } from "@/utils/dynamic-utils";
+import { safeMediaUrl } from "@/utils/media-url";
+import { url } from "@/utils/url-utils";
 
 const markdownImagePattern = /!\[([^\]]*)\]\((\S+?)(?:\s+["']([^"']*)["'])?\)/g;
 

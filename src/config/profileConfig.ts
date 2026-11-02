@@ -28,7 +28,6 @@ const legacyProfileConfig: ProfileConfig = {
 			url: "https://github.com/Playerkkk1",
 			showName: false,
 		},
-
 	],
 };
 
